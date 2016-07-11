@@ -1,0 +1,378 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		784316DE1CCF564200D4CA15 /* LNNetworkAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 784316DD1CCF564200D4CA15 /* LNNetworkAPI.m */; };
+		784316E21CCF571E00D4CA15 /* KLineDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 784316E11CCF571E00D4CA15 /* KLineDataModel.m */; };
+		789F20081CC0D163000C3060 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 789F20071CC0D163000C3060 /* main.m */; };
+		789F200B1CC0D163000C3060 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 789F200A1CC0D163000C3060 /* AppDelegate.m */; };
+		789F200E1CC0D163000C3060 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 789F200D1CC0D163000C3060 /* ViewController.m */; };
+		789F20111CC0D163000C3060 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 789F200F1CC0D163000C3060 /* Main.storyboard */; };
+		789F20131CC0D163000C3060 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 789F20121CC0D163000C3060 /* Assets.xcassets */; };
+		789F20161CC0D163000C3060 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 789F20141CC0D163000C3060 /* LaunchScreen.storyboard */; };
+		789F20201CC0D209000C3060 /* AKLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 789F201F1CC0D209000C3060 /* AKLineView.m */; };
+		789F20231CC0D256000C3060 /* AKLineDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 789F20221CC0D256000C3060 /* AKLineDataModel.m */; };
+		789F202B1CC0D283000C3060 /* LNNetWorking.m in Sources */ = {isa = PBXBuildFile; fileRef = 789F20261CC0D283000C3060 /* LNNetWorking.m */; };
+		789F202C1CC0D283000C3060 /* LNRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 789F20281CC0D283000C3060 /* LNRequest.m */; };
+		789F202D1CC0D283000C3060 /* LNResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 789F202A1CC0D283000C3060 /* LNResponse.m */; };
+		DAED62E31D339DD700C4118E /* AlexChartUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = DAED62E21D339DD700C4118E /* AlexChartUtils.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		784316DC1CCF564200D4CA15 /* LNNetworkAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNNetworkAPI.h; sourceTree = "<group>"; };
+		784316DD1CCF564200D4CA15 /* LNNetworkAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNNetworkAPI.m; sourceTree = "<group>"; };
+		784316E01CCF571E00D4CA15 /* KLineDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLineDataModel.h; sourceTree = "<group>"; };
+		784316E11CCF571E00D4CA15 /* KLineDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLineDataModel.m; sourceTree = "<group>"; };
+		789F20031CC0D163000C3060 /* AlexKLine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlexKLine.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		789F20071CC0D163000C3060 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		789F20091CC0D163000C3060 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		789F200A1CC0D163000C3060 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		789F200C1CC0D163000C3060 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		789F200D1CC0D163000C3060 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		789F20101CC0D163000C3060 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		789F20121CC0D163000C3060 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		789F20151CC0D163000C3060 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		789F20171CC0D163000C3060 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		789F201E1CC0D209000C3060 /* AKLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKLineView.h; sourceTree = "<group>"; };
+		789F201F1CC0D209000C3060 /* AKLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKLineView.m; sourceTree = "<group>"; };
+		789F20211CC0D256000C3060 /* AKLineDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKLineDataModel.h; sourceTree = "<group>"; };
+		789F20221CC0D256000C3060 /* AKLineDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKLineDataModel.m; sourceTree = "<group>"; };
+		789F20251CC0D283000C3060 /* LNNetWorking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNNetWorking.h; sourceTree = "<group>"; };
+		789F20261CC0D283000C3060 /* LNNetWorking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNNetWorking.m; sourceTree = "<group>"; };
+		789F20271CC0D283000C3060 /* LNRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNRequest.h; sourceTree = "<group>"; };
+		789F20281CC0D283000C3060 /* LNRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNRequest.m; sourceTree = "<group>"; };
+		789F20291CC0D283000C3060 /* LNResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNResponse.h; sourceTree = "<group>"; };
+		789F202A1CC0D283000C3060 /* LNResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNResponse.m; sourceTree = "<group>"; };
+		DAED62E11D339DD700C4118E /* AlexChartUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlexChartUtils.h; sourceTree = "<group>"; };
+		DAED62E21D339DD700C4118E /* AlexChartUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexChartUtils.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		789F20001CC0D163000C3060 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		784316DF1CCF570700D4CA15 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				784316E01CCF571E00D4CA15 /* KLineDataModel.h */,
+				784316E11CCF571E00D4CA15 /* KLineDataModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		789F1FFA1CC0D163000C3060 = {
+			isa = PBXGroup;
+			children = (
+				789F20051CC0D163000C3060 /* AlexKLine */,
+				789F20041CC0D163000C3060 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		789F20041CC0D163000C3060 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				789F20031CC0D163000C3060 /* AlexKLine.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		789F20051CC0D163000C3060 /* AlexKLine */ = {
+			isa = PBXGroup;
+			children = (
+				784316DF1CCF570700D4CA15 /* Model */,
+				789F20241CC0D283000C3060 /* LNFundNetwork */,
+				789F201D1CC0D1EB000C3060 /* AKLine */,
+				789F20091CC0D163000C3060 /* AppDelegate.h */,
+				789F200A1CC0D163000C3060 /* AppDelegate.m */,
+				789F200C1CC0D163000C3060 /* ViewController.h */,
+				789F200D1CC0D163000C3060 /* ViewController.m */,
+				789F200F1CC0D163000C3060 /* Main.storyboard */,
+				789F20121CC0D163000C3060 /* Assets.xcassets */,
+				789F20141CC0D163000C3060 /* LaunchScreen.storyboard */,
+				789F20171CC0D163000C3060 /* Info.plist */,
+				789F20061CC0D163000C3060 /* Supporting Files */,
+			);
+			path = AlexKLine;
+			sourceTree = "<group>";
+		};
+		789F20061CC0D163000C3060 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				789F20071CC0D163000C3060 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		789F201D1CC0D1EB000C3060 /* AKLine */ = {
+			isa = PBXGroup;
+			children = (
+				DAED62E11D339DD700C4118E /* AlexChartUtils.h */,
+				DAED62E21D339DD700C4118E /* AlexChartUtils.m */,
+				789F201E1CC0D209000C3060 /* AKLineView.h */,
+				789F201F1CC0D209000C3060 /* AKLineView.m */,
+				789F20211CC0D256000C3060 /* AKLineDataModel.h */,
+				789F20221CC0D256000C3060 /* AKLineDataModel.m */,
+			);
+			path = AKLine;
+			sourceTree = "<group>";
+		};
+		789F20241CC0D283000C3060 /* LNFundNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				784316DC1CCF564200D4CA15 /* LNNetworkAPI.h */,
+				784316DD1CCF564200D4CA15 /* LNNetworkAPI.m */,
+				789F20251CC0D283000C3060 /* LNNetWorking.h */,
+				789F20261CC0D283000C3060 /* LNNetWorking.m */,
+				789F20271CC0D283000C3060 /* LNRequest.h */,
+				789F20281CC0D283000C3060 /* LNRequest.m */,
+				789F20291CC0D283000C3060 /* LNResponse.h */,
+				789F202A1CC0D283000C3060 /* LNResponse.m */,
+			);
+			path = LNFundNetwork;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		789F20021CC0D163000C3060 /* AlexKLine */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 789F201A1CC0D163000C3060 /* Build configuration list for PBXNativeTarget "AlexKLine" */;
+			buildPhases = (
+				789F1FFF1CC0D163000C3060 /* Sources */,
+				789F20001CC0D163000C3060 /* Frameworks */,
+				789F20011CC0D163000C3060 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AlexKLine;
+			productName = AlexKLine;
+			productReference = 789F20031CC0D163000C3060 /* AlexKLine.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		789F1FFB1CC0D163000C3060 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = JixinZhang;
+				TargetAttributes = {
+					789F20021CC0D163000C3060 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 789F1FFE1CC0D163000C3060 /* Build configuration list for PBXProject "AlexKLine" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 789F1FFA1CC0D163000C3060;
+			productRefGroup = 789F20041CC0D163000C3060 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				789F20021CC0D163000C3060 /* AlexKLine */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		789F20011CC0D163000C3060 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				789F20161CC0D163000C3060 /* LaunchScreen.storyboard in Resources */,
+				789F20131CC0D163000C3060 /* Assets.xcassets in Resources */,
+				789F20111CC0D163000C3060 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		789F1FFF1CC0D163000C3060 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				789F202D1CC0D283000C3060 /* LNResponse.m in Sources */,
+				789F200E1CC0D163000C3060 /* ViewController.m in Sources */,
+				DAED62E31D339DD700C4118E /* AlexChartUtils.m in Sources */,
+				784316DE1CCF564200D4CA15 /* LNNetworkAPI.m in Sources */,
+				789F202B1CC0D283000C3060 /* LNNetWorking.m in Sources */,
+				789F200B1CC0D163000C3060 /* AppDelegate.m in Sources */,
+				789F202C1CC0D283000C3060 /* LNRequest.m in Sources */,
+				789F20201CC0D209000C3060 /* AKLineView.m in Sources */,
+				789F20081CC0D163000C3060 /* main.m in Sources */,
+				789F20231CC0D256000C3060 /* AKLineDataModel.m in Sources */,
+				784316E21CCF571E00D4CA15 /* KLineDataModel.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		789F200F1CC0D163000C3060 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				789F20101CC0D163000C3060 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		789F20141CC0D163000C3060 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				789F20151CC0D163000C3060 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		789F20181CC0D163000C3060 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		789F20191CC0D163000C3060 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		789F201B1CC0D163000C3060 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = AlexKLine/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zjixin.AlexKLine;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		789F201C1CC0D163000C3060 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = AlexKLine/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zjixin.AlexKLine;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		789F1FFE1CC0D163000C3060 /* Build configuration list for PBXProject "AlexKLine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				789F20181CC0D163000C3060 /* Debug */,
+				789F20191CC0D163000C3060 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		789F201A1CC0D163000C3060 /* Build configuration list for PBXNativeTarget "AlexKLine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				789F201B1CC0D163000C3060 /* Debug */,
+				789F201C1CC0D163000C3060 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 789F1FFB1CC0D163000C3060 /* Project object */;
+}
