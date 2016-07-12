@@ -56,7 +56,6 @@
         NSInteger lastPriceIndex = [fields indexOfObject:@"last_px"];
         NSInteger averagePriceIndex = [fields indexOfObject:@"avg_px"];
         NSInteger businessCountIndex = [fields indexOfObject:@"business_amount"];
-        NSInteger businessBalanceIndex = [fields indexOfObject:@"business_balance"];
         NSInteger minTimeIndex = [fields indexOfObject:@"min_time"];
         
         NSDateFormatter* dateFormat = [[NSDateFormatter alloc] init];

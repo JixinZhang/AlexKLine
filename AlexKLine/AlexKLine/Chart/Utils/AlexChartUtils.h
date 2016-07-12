@@ -10,6 +10,13 @@
 #import <CoreGraphics/CoreGraphics.h>
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, TriangleDirection) {
+    TriangleDirectionUp = 0,    //向上
+    TriangleDirectionDown,      //向下
+    TriangleDirectionLeft,      //向左
+    TriangleDirectionRight      //向右
+};
+
 @interface AlexChartUtils : NSObject
 
 #pragma mark - 绘制画圆
@@ -43,6 +50,15 @@
        lineWidht:(CGFloat)lineWidth
             rect:(CGRect)rect;
 
+#pragma markd - 绘制圆角矩形
+
++ (void)drawRoundedRect:(nullable CGContextRef)context
+              lineColor:(nullable UIColor *)lineColor
+              fillColor:(nullable UIColor *)fillColor
+              lineWidth:(CGFloat)lineWidth
+           cornerRadius:(CGFloat)cornerRadius
+                   rect:(CGRect)rect;
+
 #pragma mark - 绘制单条线段
 
 + (void)drawLine:(nullable CGContextRef)context
@@ -73,4 +89,21 @@
            align:(NSTextAlignment)align
            point:(CGPoint)point
            attrs:(nullable NSDictionary<NSString *, id> *)attrs;
+
+#pragma mark - 绘制三角形
+//正三角形
++ (void)drawTriangle:(nullable CGContextRef)context
+           lineColor:(nullable UIColor *)lineColor
+           fillColor:(nullable UIColor *)fillColor
+         centerPoint:(CGPoint)centerPoint
+              length:(CGFloat)length
+           lineWidth:(CGFloat)lineWidth
+           direction:(TriangleDirection)direction;
+
+//任意三角形
++ (void)drawTriangle:(nullable CGContextRef)context
+           lineColor:(nullable UIColor *)lineColor
+           fillColor:(nullable UIColor *)fillColor
+            pointArr:(nullable NSArray *)pointArr
+           lineWidth:(CGFloat)lineWidth;
 @end

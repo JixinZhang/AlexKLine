@@ -151,8 +151,26 @@
     //文字
     [AlexChartUtils drawText:context text:@"7月12日" align:NSTextAlignmentCenter point:CGPointMake(60, 30) attrs:nil];
     
+    //三角形
+    [AlexChartUtils drawTriangle:context lineColor:[UIColor blackColor] fillColor:[UIColor blueColor] centerPoint:CGPointMake(30, 350) length:60 lineWidth:1.0 direction:TriangleDirectionUp];
+    
+    [AlexChartUtils drawTriangle:context lineColor:[UIColor blackColor] fillColor:[UIColor blueColor] centerPoint:CGPointMake(90, 350) length:60 lineWidth:1.0 direction:TriangleDirectionDown];
+    
+    [AlexChartUtils drawTriangle:context lineColor:[UIColor blackColor] fillColor:[UIColor blueColor] centerPoint:CGPointMake(150, 350) length:60 lineWidth:1.0 direction:TriangleDirectionLeft];
+    
+    [AlexChartUtils drawTriangle:context lineColor:[UIColor blackColor] fillColor:[UIColor blueColor] centerPoint:CGPointMake(220, 350) length:60 lineWidth:1.0 direction:TriangleDirectionRight];
+    
+    //任意三角形
+    NSArray *pointArr = @[[NSValue valueWithCGPoint:CGPointMake(280, 350)],
+                          [NSValue valueWithCGPoint:CGPointMake(300, 380)],
+                          [NSValue valueWithCGPoint: CGPointMake(320, 330)]];
+    [AlexChartUtils drawTriangle:context lineColor:[UIColor blueColor] fillColor:[UIColor blueColor] pointArr:pointArr lineWidth:1.0f];
+
+    //圆角矩形
+    [AlexChartUtils drawRoundedRect:context lineColor:[UIColor blackColor] fillColor:[UIColor brownColor] lineWidth:2.0f cornerRadius:10.0f rect:CGRectMake(30, 400, 100, 30)];
     //虚线
     [AlexChartUtils drawDashLine:context color:[UIColor grayColor] width:1.0f startPoint:CGPointMake(14, 160) endPoint:CGPointMake(320, 160)];
+    
 }
 
 @end
