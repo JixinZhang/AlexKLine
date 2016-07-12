@@ -13,6 +13,8 @@
 #import "KLineDataModel.h"
 @interface ViewController ()
 
+@property (nonatomic, strong) UIPanGestureRecognizer *panGestureRecogizer;
+@property (nonatomic, strong) AKLineView *kLineView;
 @end
 
 @implementation ViewController
@@ -22,14 +24,18 @@
     __weak typeof (self)weakSelf = self;
     [self requestTrend:nil block:^(NSArray *dataArray) {
         self.view.backgroundColor = [UIColor whiteColor];
-        AKLineView *kLineView = [[AKLineView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        kLineView.xAxisWidth = [UIScreen mainScreen].bounds.size.width - 10;
-        kLineView.yAxisHeightOfKLine = 100;
-        kLineView.yAxisHeightOfVolume = 70;
-        kLineView.dataArr = dataArray;
-        kLineView.backgroundColor = [UIColor whiteColor];
-        [weakSelf.view addSubview:kLineView];
+        weakSelf.kLineView = [[AKLineView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        weakSelf.kLineView.xAxisWidth = [UIScreen mainScreen].bounds.size.width - 10;
+        weakSelf.kLineView.yAxisHeightOfKLine = 100;
+        weakSelf.kLineView.yAxisHeightOfVolume = 70;
+        weakSelf.kLineView.dataArr = dataArray;
+        weakSelf.kLineView.backgroundColor = [UIColor whiteColor];
+        [weakSelf.view addSubview:weakSelf.kLineView];
+        
+        weakSelf.panGestureRecogizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureAction:)];
+        [weakSelf.kLineView addGestureRecognizer:weakSelf.panGestureRecogizer];
     }];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -99,6 +105,12 @@
     } fail:^(NSError *error) {
         NSLog(@"request K line Data fail");
     }];
+}
+
+- (void)panGestureAction:(UIPanGestureRecognizer *)sender {
+    CGPoint point = [sender translationInView:self.kLineView];
+    sender.view.center = CGPointMake(sender.view.center.x + point.x, sender.view.center.y + point.y);
+    [sender setTranslation:CGPointMake(0, 0) inView:self.view];
 }
 
 @end

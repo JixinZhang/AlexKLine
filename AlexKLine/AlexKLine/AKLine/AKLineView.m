@@ -20,6 +20,7 @@
     UIView *kLineChartView;   //k线图view
     UIView *volumeChartView;  //成交量view
     NSThread *thread;
+    CGContextRef ctx;
 }
 
 @end
@@ -152,7 +153,7 @@
     [AlexChartUtils drawText:context text:@"7月12日" align:NSTextAlignmentCenter point:CGPointMake(60, 30) attrs:nil];
     
     //三角形
-    [AlexChartUtils drawTriangle:context lineColor:[UIColor blackColor] fillColor:[UIColor blueColor] centerPoint:CGPointMake(30, 350) length:60 lineWidth:1.0 direction:TriangleDirectionUp];
+    [AlexChartUtils drawTriangle:context lineColor:[UIColor blackColor] fillColor:[UIColor blueColor] centerPoint:CGPointMake(30, 350) length:40 lineWidth:1.0 direction:TriangleDirectionUp];
     
     [AlexChartUtils drawTriangle:context lineColor:[UIColor blackColor] fillColor:[UIColor blueColor] centerPoint:CGPointMake(90, 350) length:60 lineWidth:1.0 direction:TriangleDirectionDown];
     

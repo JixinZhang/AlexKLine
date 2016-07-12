@@ -17,5 +17,4 @@
 //- (void)start;
 - (void)startWith:(NSArray *)data;
 - (void)drawLineWithData:(NSArray *)dataArray;
-
 @end
