@@ -21,6 +21,7 @@
     UIView *volumeChartView;  //成交量view
     NSThread *thread;
     CGContextRef ctx;
+    CGPoint touchPoint;
 }
 
 @end
@@ -63,6 +64,7 @@
     [self drawLineWithData:self.dataArr];
     [self drawVolumeWithData:self.dataArr];
     [self drawGraphic];
+    [self drawTouchCircle:touchPoint];
 }
 
 - (void)drawLineWithData:(NSArray *)dataArray {
@@ -174,4 +176,26 @@
     
 }
 
+- (void)drawTouchCircle:(CGPoint)point {
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [AlexChartUtils drawCircle:context fillcolor:[UIColor greenColor] radius:20 point:point];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    UITouch *touch = [touches anyObject];
+    touchPoint = [touch locationInView:self];
+    
+    [self setNeedsDisplay];
+}
+
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    UITouch *touch = [touches anyObject];
+    touchPoint = [touch locationInView:self];
+    
+    [self setNeedsDisplay];
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+}
 @end

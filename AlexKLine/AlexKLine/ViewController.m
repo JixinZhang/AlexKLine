@@ -32,8 +32,8 @@
         weakSelf.kLineView.backgroundColor = [UIColor whiteColor];
         [weakSelf.view addSubview:weakSelf.kLineView];
         
-        weakSelf.panGestureRecogizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureAction:)];
-        [weakSelf.kLineView addGestureRecognizer:weakSelf.panGestureRecogizer];
+//        weakSelf.panGestureRecogizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureAction:)];
+//        [weakSelf.kLineView addGestureRecognizer:weakSelf.panGestureRecogizer];
     }];
     
 }
@@ -107,10 +107,10 @@
     }];
 }
 
-- (void)panGestureAction:(UIPanGestureRecognizer *)sender {
-    CGPoint point = [sender translationInView:self.kLineView];
-    sender.view.center = CGPointMake(sender.view.center.x + point.x, sender.view.center.y + point.y);
-    [sender setTranslation:CGPointMake(0, 0) inView:self.view];
-}
+//- (void)panGestureAction:(UIPanGestureRecognizer *)sender {
+//    CGPoint point = [sender translationInView:self.kLineView];
+//    sender.view.center = CGPointMake(sender.view.center.x + point.x, sender.view.center.y + point.y);
+//    [sender setTranslation:CGPointMake(0, 0) inView:self.view];
+//}
 
 @end
