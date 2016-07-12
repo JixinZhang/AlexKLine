@@ -76,6 +76,8 @@
         NSString *tempStr = [NSString stringWithFormat:@"%f",160 - (([array.volume floatValue])/10000.0)];
         [pointY addObject:tempStr];
     }
+    NSMutableArray *points = [NSMutableArray array];
+
     int i = 12;
     for (id item in pointY) {
         CGPoint currentPoint;
@@ -91,12 +93,10 @@
         if ([pointY indexOfObject:item] < pointY.count) {
             CGContextMoveToPoint(context, currentPoint.x, currentPoint.y);
         }
-        
-        
-//        CGRect rect = CGRectMake(i-1, currentPoint.y +2, 2, 4);
-        
-//        [AlexChartUtils drawRect:context lineColor:[UIColor redColor] fillColor:[UIColor redColor] lineWidht:1 rect:rect];
+        [points addObject:[NSValue valueWithCGPoint:currentPoint]];
     }
+    
+    [AlexChartUtils drawCircles:context fillColor:[UIColor brownColor] points:points radius:2.0f];
     
     [self setNeedsDisplay];
     [self setNeedsLayout];
@@ -134,13 +134,25 @@
 }
 
 - (void)drawGraphic {
-    
+    //圆
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGPoint point = CGPointMake(150, 50);
     [AlexChartUtils drawCircle:context fillcolor:[UIColor greenColor] radius:20 point:point];
     
+    //同心圆
     [AlexChartUtils drawConcentricCircle:context lineColor:[UIColor redColor] fillColor:[UIColor purpleColor] lineWidth:5 radius:10 point:CGPointMake(20, 30)];
     
+    //矩形
+    [AlexChartUtils drawRect:context lineColor:[UIColor brownColor] fillColor:[UIColor redColor] lineWidht:2.0 rect:CGRectMake(40, 30, 10, 20)];
+    
+    //直线
+    [AlexChartUtils drawLine:context color:[UIColor redColor] width:2 startPoint:CGPointMake(45, 25) endPoint:CGPointMake(45, 55)];
+    
+    //文字
+    [AlexChartUtils drawText:context text:@"7月12日" align:NSTextAlignmentCenter point:CGPointMake(60, 30) attrs:nil];
+    
+    //虚线
+    [AlexChartUtils drawDashLine:context color:[UIColor grayColor] width:1.0f startPoint:CGPointMake(14, 160) endPoint:CGPointMake(320, 160)];
 }
 
 @end

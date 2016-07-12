@@ -22,15 +22,10 @@
     __weak typeof (self)weakSelf = self;
     [self requestTrend:nil block:^(NSArray *dataArray) {
         self.view.backgroundColor = [UIColor whiteColor];
-        AKLineView *kLineView = [[AKLineView alloc] init];
-        CGRect frame = self.view.frame;
-        frame.origin = CGPointMake(0, 120);
-        frame.size = CGSizeMake(310, 480);
-        kLineView.frame = frame;
-        kLineView.xAxisWidth = 300;
+        AKLineView *kLineView = [[AKLineView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        kLineView.xAxisWidth = [UIScreen mainScreen].bounds.size.width - 10;
         kLineView.yAxisHeightOfKLine = 100;
         kLineView.yAxisHeightOfVolume = 70;
-        //    [kLineView start];
         kLineView.dataArr = dataArray;
         kLineView.backgroundColor = [UIColor whiteColor];
         [weakSelf.view addSubview:kLineView];

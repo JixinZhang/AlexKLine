@@ -20,7 +20,7 @@
 		789F202B1CC0D283000C3060 /* LNNetWorking.m in Sources */ = {isa = PBXBuildFile; fileRef = 789F20261CC0D283000C3060 /* LNNetWorking.m */; };
 		789F202C1CC0D283000C3060 /* LNRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 789F20281CC0D283000C3060 /* LNRequest.m */; };
 		789F202D1CC0D283000C3060 /* LNResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 789F202A1CC0D283000C3060 /* LNResponse.m */; };
-		DAED62E31D339DD700C4118E /* AlexChartUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = DAED62E21D339DD700C4118E /* AlexChartUtils.m */; };
+		DA05FD7B1D348A4000D5EB15 /* AlexChartUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = DA05FD7A1D348A4000D5EB15 /* AlexChartUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,8 +48,8 @@
 		789F20281CC0D283000C3060 /* LNRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNRequest.m; sourceTree = "<group>"; };
 		789F20291CC0D283000C3060 /* LNResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNResponse.h; sourceTree = "<group>"; };
 		789F202A1CC0D283000C3060 /* LNResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNResponse.m; sourceTree = "<group>"; };
-		DAED62E11D339DD700C4118E /* AlexChartUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlexChartUtils.h; sourceTree = "<group>"; };
-		DAED62E21D339DD700C4118E /* AlexChartUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexChartUtils.m; sourceTree = "<group>"; };
+		DA05FD791D348A4000D5EB15 /* AlexChartUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlexChartUtils.h; sourceTree = "<group>"; };
+		DA05FD7A1D348A4000D5EB15 /* AlexChartUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexChartUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +91,7 @@
 		789F20051CC0D163000C3060 /* AlexKLine */ = {
 			isa = PBXGroup;
 			children = (
+				DA05FD771D348A4000D5EB15 /* Chart */,
 				784316DF1CCF570700D4CA15 /* Model */,
 				789F20241CC0D283000C3060 /* LNFundNetwork */,
 				789F201D1CC0D1EB000C3060 /* AKLine */,
@@ -118,8 +119,6 @@
 		789F201D1CC0D1EB000C3060 /* AKLine */ = {
 			isa = PBXGroup;
 			children = (
-				DAED62E11D339DD700C4118E /* AlexChartUtils.h */,
-				DAED62E21D339DD700C4118E /* AlexChartUtils.m */,
 				789F201E1CC0D209000C3060 /* AKLineView.h */,
 				789F201F1CC0D209000C3060 /* AKLineView.m */,
 				789F20211CC0D256000C3060 /* AKLineDataModel.h */,
@@ -141,6 +140,23 @@
 				789F202A1CC0D283000C3060 /* LNResponse.m */,
 			);
 			path = LNFundNetwork;
+			sourceTree = "<group>";
+		};
+		DA05FD771D348A4000D5EB15 /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				DA05FD781D348A4000D5EB15 /* Utils */,
+			);
+			path = Chart;
+			sourceTree = "<group>";
+		};
+		DA05FD781D348A4000D5EB15 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				DA05FD791D348A4000D5EB15 /* AlexChartUtils.h */,
+				DA05FD7A1D348A4000D5EB15 /* AlexChartUtils.m */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,7 +231,7 @@
 			files = (
 				789F202D1CC0D283000C3060 /* LNResponse.m in Sources */,
 				789F200E1CC0D163000C3060 /* ViewController.m in Sources */,
-				DAED62E31D339DD700C4118E /* AlexChartUtils.m in Sources */,
+				DA05FD7B1D348A4000D5EB15 /* AlexChartUtils.m in Sources */,
 				784316DE1CCF564200D4CA15 /* LNNetworkAPI.m in Sources */,
 				789F202B1CC0D283000C3060 /* LNNetWorking.m in Sources */,
 				789F200B1CC0D163000C3060 /* AppDelegate.m in Sources */,
