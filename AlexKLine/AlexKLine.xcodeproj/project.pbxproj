@@ -21,6 +21,8 @@
 		789F202C1CC0D283000C3060 /* LNRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 789F20281CC0D283000C3060 /* LNRequest.m */; };
 		789F202D1CC0D283000C3060 /* LNResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 789F202A1CC0D283000C3060 /* LNResponse.m */; };
 		DA05FD7B1D348A4000D5EB15 /* AlexChartUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = DA05FD7A1D348A4000D5EB15 /* AlexChartUtils.m */; };
+		DA1022B41D36455500E0CBEC /* AlexAxisBase.m in Sources */ = {isa = PBXBuildFile; fileRef = DA1022B31D36455500E0CBEC /* AlexAxisBase.m */; };
+		DA1022BA1D3648B600E0CBEC /* AlexXAxis.m in Sources */ = {isa = PBXBuildFile; fileRef = DA1022B91D3648B600E0CBEC /* AlexXAxis.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,10 @@
 		789F202A1CC0D283000C3060 /* LNResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNResponse.m; sourceTree = "<group>"; };
 		DA05FD791D348A4000D5EB15 /* AlexChartUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlexChartUtils.h; sourceTree = "<group>"; };
 		DA05FD7A1D348A4000D5EB15 /* AlexChartUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexChartUtils.m; sourceTree = "<group>"; };
+		DA1022B21D36455500E0CBEC /* AlexAxisBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlexAxisBase.h; sourceTree = "<group>"; };
+		DA1022B31D36455500E0CBEC /* AlexAxisBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexAxisBase.m; sourceTree = "<group>"; };
+		DA1022B81D3648B600E0CBEC /* AlexXAxis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlexXAxis.h; sourceTree = "<group>"; };
+		DA1022B91D3648B600E0CBEC /* AlexXAxis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexXAxis.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +169,10 @@
 		DA05FD7C1D34AB6C00D5EB15 /* CoordinateSystem */ = {
 			isa = PBXGroup;
 			children = (
+				DA1022B21D36455500E0CBEC /* AlexAxisBase.h */,
+				DA1022B31D36455500E0CBEC /* AlexAxisBase.m */,
+				DA1022B81D3648B600E0CBEC /* AlexXAxis.h */,
+				DA1022B91D3648B600E0CBEC /* AlexXAxis.m */,
 			);
 			path = CoordinateSystem;
 			sourceTree = "<group>";
@@ -240,7 +250,9 @@
 				789F202D1CC0D283000C3060 /* LNResponse.m in Sources */,
 				789F200E1CC0D163000C3060 /* ViewController.m in Sources */,
 				DA05FD7B1D348A4000D5EB15 /* AlexChartUtils.m in Sources */,
+				DA1022B41D36455500E0CBEC /* AlexAxisBase.m in Sources */,
 				784316DE1CCF564200D4CA15 /* LNNetworkAPI.m in Sources */,
+				DA1022BA1D3648B600E0CBEC /* AlexXAxis.m in Sources */,
 				789F202B1CC0D283000C3060 /* LNNetWorking.m in Sources */,
 				789F200B1CC0D163000C3060 /* AppDelegate.m in Sources */,
 				789F202C1CC0D283000C3060 /* LNRequest.m in Sources */,
