@@ -16,13 +16,17 @@
 		789F20131CC0D163000C3060 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 789F20121CC0D163000C3060 /* Assets.xcassets */; };
 		789F20161CC0D163000C3060 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 789F20141CC0D163000C3060 /* LaunchScreen.storyboard */; };
 		789F20201CC0D209000C3060 /* AKLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 789F201F1CC0D209000C3060 /* AKLineView.m */; };
-		789F20231CC0D256000C3060 /* AKLineDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 789F20221CC0D256000C3060 /* AKLineDataModel.m */; };
 		789F202B1CC0D283000C3060 /* LNNetWorking.m in Sources */ = {isa = PBXBuildFile; fileRef = 789F20261CC0D283000C3060 /* LNNetWorking.m */; };
 		789F202C1CC0D283000C3060 /* LNRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 789F20281CC0D283000C3060 /* LNRequest.m */; };
 		789F202D1CC0D283000C3060 /* LNResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 789F202A1CC0D283000C3060 /* LNResponse.m */; };
 		DA05FD7B1D348A4000D5EB15 /* AlexChartUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = DA05FD7A1D348A4000D5EB15 /* AlexChartUtils.m */; };
 		DA1022B41D36455500E0CBEC /* AlexAxisBase.m in Sources */ = {isa = PBXBuildFile; fileRef = DA1022B31D36455500E0CBEC /* AlexAxisBase.m */; };
 		DA1022BA1D3648B600E0CBEC /* AlexXAxis.m in Sources */ = {isa = PBXBuildFile; fileRef = DA1022B91D3648B600E0CBEC /* AlexXAxis.m */; };
+		DA595D221D376E8100300EEE /* AlexYAxis.m in Sources */ = {isa = PBXBuildFile; fileRef = DA595D211D376E8100300EEE /* AlexYAxis.m */; };
+		DA595D261D378E1900300EEE /* AlexChartBase.m in Sources */ = {isa = PBXBuildFile; fileRef = DA595D251D378E1900300EEE /* AlexChartBase.m */; };
+		DA595D291D378E2C00300EEE /* AlexChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA595D281D378E2C00300EEE /* AlexChartView.m */; };
+		DA595D2E1D37913000300EEE /* AlexChartData.m in Sources */ = {isa = PBXBuildFile; fileRef = DA595D2D1D37913000300EEE /* AlexChartData.m */; };
+		DA595D311D37990700300EEE /* AlexChartHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = DA595D301D37990700300EEE /* AlexChartHandler.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,8 +46,6 @@
 		789F20171CC0D163000C3060 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		789F201E1CC0D209000C3060 /* AKLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKLineView.h; sourceTree = "<group>"; };
 		789F201F1CC0D209000C3060 /* AKLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKLineView.m; sourceTree = "<group>"; };
-		789F20211CC0D256000C3060 /* AKLineDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKLineDataModel.h; sourceTree = "<group>"; };
-		789F20221CC0D256000C3060 /* AKLineDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKLineDataModel.m; sourceTree = "<group>"; };
 		789F20251CC0D283000C3060 /* LNNetWorking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNNetWorking.h; sourceTree = "<group>"; };
 		789F20261CC0D283000C3060 /* LNNetWorking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNNetWorking.m; sourceTree = "<group>"; };
 		789F20271CC0D283000C3060 /* LNRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNRequest.h; sourceTree = "<group>"; };
@@ -56,6 +58,16 @@
 		DA1022B31D36455500E0CBEC /* AlexAxisBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexAxisBase.m; sourceTree = "<group>"; };
 		DA1022B81D3648B600E0CBEC /* AlexXAxis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlexXAxis.h; sourceTree = "<group>"; };
 		DA1022B91D3648B600E0CBEC /* AlexXAxis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexXAxis.m; sourceTree = "<group>"; };
+		DA595D201D376E8100300EEE /* AlexYAxis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlexYAxis.h; sourceTree = "<group>"; };
+		DA595D211D376E8100300EEE /* AlexYAxis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexYAxis.m; sourceTree = "<group>"; };
+		DA595D241D378E1900300EEE /* AlexChartBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlexChartBase.h; sourceTree = "<group>"; };
+		DA595D251D378E1900300EEE /* AlexChartBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexChartBase.m; sourceTree = "<group>"; };
+		DA595D271D378E2C00300EEE /* AlexChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlexChartView.h; sourceTree = "<group>"; };
+		DA595D281D378E2C00300EEE /* AlexChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexChartView.m; sourceTree = "<group>"; };
+		DA595D2C1D37913000300EEE /* AlexChartData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlexChartData.h; sourceTree = "<group>"; };
+		DA595D2D1D37913000300EEE /* AlexChartData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexChartData.m; sourceTree = "<group>"; };
+		DA595D2F1D37990700300EEE /* AlexChartHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlexChartHandler.h; sourceTree = "<group>"; };
+		DA595D301D37990700300EEE /* AlexChartHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexChartHandler.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,8 +139,6 @@
 			children = (
 				789F201E1CC0D209000C3060 /* AKLineView.h */,
 				789F201F1CC0D209000C3060 /* AKLineView.m */,
-				789F20211CC0D256000C3060 /* AKLineDataModel.h */,
-				789F20221CC0D256000C3060 /* AKLineDataModel.m */,
 			);
 			path = AKLine;
 			sourceTree = "<group>";
@@ -151,8 +161,10 @@
 		DA05FD771D348A4000D5EB15 /* Chart */ = {
 			isa = PBXGroup;
 			children = (
+				DA595D2B1D378FB400300EEE /* Model */,
 				DA05FD7C1D34AB6C00D5EB15 /* CoordinateSystem */,
 				DA05FD781D348A4000D5EB15 /* Utils */,
+				DA595D231D378DF900300EEE /* View */,
 			);
 			path = Chart;
 			sourceTree = "<group>";
@@ -162,6 +174,8 @@
 			children = (
 				DA05FD791D348A4000D5EB15 /* AlexChartUtils.h */,
 				DA05FD7A1D348A4000D5EB15 /* AlexChartUtils.m */,
+				DA595D2F1D37990700300EEE /* AlexChartHandler.h */,
+				DA595D301D37990700300EEE /* AlexChartHandler.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -173,8 +187,30 @@
 				DA1022B31D36455500E0CBEC /* AlexAxisBase.m */,
 				DA1022B81D3648B600E0CBEC /* AlexXAxis.h */,
 				DA1022B91D3648B600E0CBEC /* AlexXAxis.m */,
+				DA595D201D376E8100300EEE /* AlexYAxis.h */,
+				DA595D211D376E8100300EEE /* AlexYAxis.m */,
 			);
 			path = CoordinateSystem;
+			sourceTree = "<group>";
+		};
+		DA595D231D378DF900300EEE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DA595D241D378E1900300EEE /* AlexChartBase.h */,
+				DA595D251D378E1900300EEE /* AlexChartBase.m */,
+				DA595D271D378E2C00300EEE /* AlexChartView.h */,
+				DA595D281D378E2C00300EEE /* AlexChartView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DA595D2B1D378FB400300EEE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DA595D2C1D37913000300EEE /* AlexChartData.h */,
+				DA595D2D1D37913000300EEE /* AlexChartData.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,10 +283,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA595D2E1D37913000300EEE /* AlexChartData.m in Sources */,
+				DA595D291D378E2C00300EEE /* AlexChartView.m in Sources */,
 				789F202D1CC0D283000C3060 /* LNResponse.m in Sources */,
 				789F200E1CC0D163000C3060 /* ViewController.m in Sources */,
 				DA05FD7B1D348A4000D5EB15 /* AlexChartUtils.m in Sources */,
 				DA1022B41D36455500E0CBEC /* AlexAxisBase.m in Sources */,
+				DA595D221D376E8100300EEE /* AlexYAxis.m in Sources */,
+				DA595D261D378E1900300EEE /* AlexChartBase.m in Sources */,
 				784316DE1CCF564200D4CA15 /* LNNetworkAPI.m in Sources */,
 				DA1022BA1D3648B600E0CBEC /* AlexXAxis.m in Sources */,
 				789F202B1CC0D283000C3060 /* LNNetWorking.m in Sources */,
@@ -258,7 +298,7 @@
 				789F202C1CC0D283000C3060 /* LNRequest.m in Sources */,
 				789F20201CC0D209000C3060 /* AKLineView.m in Sources */,
 				789F20081CC0D163000C3060 /* main.m in Sources */,
-				789F20231CC0D256000C3060 /* AKLineDataModel.m in Sources */,
+				DA595D311D37990700300EEE /* AlexChartHandler.m in Sources */,
 				784316E21CCF571E00D4CA15 /* KLineDataModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
