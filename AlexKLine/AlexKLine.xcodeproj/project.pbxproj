@@ -22,6 +22,8 @@
 		DA05FD7B1D348A4000D5EB15 /* AlexChartUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = DA05FD7A1D348A4000D5EB15 /* AlexChartUtils.m */; };
 		DA1022B41D36455500E0CBEC /* AlexAxisBase.m in Sources */ = {isa = PBXBuildFile; fileRef = DA1022B31D36455500E0CBEC /* AlexAxisBase.m */; };
 		DA1022BA1D3648B600E0CBEC /* AlexXAxis.m in Sources */ = {isa = PBXBuildFile; fileRef = DA1022B91D3648B600E0CBEC /* AlexXAxis.m */; };
+		DA29694F1D38EF440047E44A /* AlexDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = DA29694E1D38EF440047E44A /* AlexDataSet.m */; };
+		DA2969521D38F2F20047E44A /* AlexChartLineSet.m in Sources */ = {isa = PBXBuildFile; fileRef = DA2969511D38F2F20047E44A /* AlexChartLineSet.m */; };
 		DA595D221D376E8100300EEE /* AlexYAxis.m in Sources */ = {isa = PBXBuildFile; fileRef = DA595D211D376E8100300EEE /* AlexYAxis.m */; };
 		DA595D261D378E1900300EEE /* AlexChartBase.m in Sources */ = {isa = PBXBuildFile; fileRef = DA595D251D378E1900300EEE /* AlexChartBase.m */; };
 		DA595D291D378E2C00300EEE /* AlexChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA595D281D378E2C00300EEE /* AlexChartView.m */; };
@@ -58,6 +60,10 @@
 		DA1022B31D36455500E0CBEC /* AlexAxisBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexAxisBase.m; sourceTree = "<group>"; };
 		DA1022B81D3648B600E0CBEC /* AlexXAxis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlexXAxis.h; sourceTree = "<group>"; };
 		DA1022B91D3648B600E0CBEC /* AlexXAxis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexXAxis.m; sourceTree = "<group>"; };
+		DA29694D1D38EF440047E44A /* AlexDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlexDataSet.h; sourceTree = "<group>"; };
+		DA29694E1D38EF440047E44A /* AlexDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexDataSet.m; sourceTree = "<group>"; };
+		DA2969501D38F2F20047E44A /* AlexChartLineSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlexChartLineSet.h; sourceTree = "<group>"; };
+		DA2969511D38F2F20047E44A /* AlexChartLineSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexChartLineSet.m; sourceTree = "<group>"; };
 		DA595D201D376E8100300EEE /* AlexYAxis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlexYAxis.h; sourceTree = "<group>"; };
 		DA595D211D376E8100300EEE /* AlexYAxis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexYAxis.m; sourceTree = "<group>"; };
 		DA595D241D378E1900300EEE /* AlexChartBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlexChartBase.h; sourceTree = "<group>"; };
@@ -209,6 +215,10 @@
 			children = (
 				DA595D2C1D37913000300EEE /* AlexChartData.h */,
 				DA595D2D1D37913000300EEE /* AlexChartData.m */,
+				DA29694D1D38EF440047E44A /* AlexDataSet.h */,
+				DA29694E1D38EF440047E44A /* AlexDataSet.m */,
+				DA2969501D38F2F20047E44A /* AlexChartLineSet.h */,
+				DA2969511D38F2F20047E44A /* AlexChartLineSet.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -286,6 +296,7 @@
 				DA595D2E1D37913000300EEE /* AlexChartData.m in Sources */,
 				DA595D291D378E2C00300EEE /* AlexChartView.m in Sources */,
 				789F202D1CC0D283000C3060 /* LNResponse.m in Sources */,
+				DA2969521D38F2F20047E44A /* AlexChartLineSet.m in Sources */,
 				789F200E1CC0D163000C3060 /* ViewController.m in Sources */,
 				DA05FD7B1D348A4000D5EB15 /* AlexChartUtils.m in Sources */,
 				DA1022B41D36455500E0CBEC /* AlexAxisBase.m in Sources */,
@@ -297,6 +308,7 @@
 				789F200B1CC0D163000C3060 /* AppDelegate.m in Sources */,
 				789F202C1CC0D283000C3060 /* LNRequest.m in Sources */,
 				789F20201CC0D209000C3060 /* AKLineView.m in Sources */,
+				DA29694F1D38EF440047E44A /* AlexDataSet.m in Sources */,
 				789F20081CC0D163000C3060 /* main.m in Sources */,
 				DA595D311D37990700300EEE /* AlexChartHandler.m in Sources */,
 				784316E21CCF571E00D4CA15 /* KLineDataModel.m in Sources */,
