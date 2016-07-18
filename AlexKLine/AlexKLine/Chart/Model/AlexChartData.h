@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "AlexXAxis.h"
+#import "AlexYAxis.h"
+#import "AlexDataSet.h"
 #import "AlexChartHandler.h"
 #import "AlexChartLineSet.h"
 

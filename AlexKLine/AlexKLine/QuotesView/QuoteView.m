@@ -1,55 +1,79 @@
 //
-//  ViewController.m
+//  QuoteView.m
 //  AlexKLine
 //
-//  Created by ZhangBob on 4/15/16.
+//  Created by WSCN on 7/18/16.
 //  Copyright © 2016 JixinZhang. All rights reserved.
 //
 
-#import "ViewController.h"
-#import "AKLineView.h"
-#import "LNRequest.h"
+#import "QuoteView.h"
+#import "AlexChartView.h"
 #import "LNNetWorking.h"
 #import "KLineDataModel.h"
-#import "QuoteView.h"
+#import "AlexDataSet.h"
 
-#define kScreenWidth [UIScreen mainScreen].bounds.size.width
-#define kScreenheight [UIScreen mainScreen].bounds.size.height
-
-@interface ViewController ()
-
-@property (nonatomic, strong) AKLineView *kLineView;
-@property (nonatomic, strong) QuoteView *quoteView;
+@interface QuoteView()
+@property (nonatomic, strong) AlexChartView *chartView;
 @end
 
-@implementation ViewController
+@implementation QuoteView
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.view.backgroundColor = [UIColor blackColor];
-    __weak typeof (self)weakSelf = self;
-    [self requestTrend:nil block:^(NSArray *dataArray) {
-        weakSelf.kLineView = [[AKLineView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 450)];
-        weakSelf.kLineView.backgroundColor = [UIColor grayColor];
-        weakSelf.kLineView.xAxisWidth = [UIScreen mainScreen].bounds.size.width - 10;
-        weakSelf.kLineView.yAxisHeightOfKLine = 100;
-        weakSelf.kLineView.yAxisHeightOfVolume = 70;
-        weakSelf.kLineView.dataArr = dataArray;
-        weakSelf.kLineView.backgroundColor = [UIColor whiteColor];
-        [weakSelf.view addSubview:weakSelf.kLineView];
+#pragma  mark - Init
+
+- (instancetype)init {
+    if (self = [super init]) {
+        [self setupViews];
+    }
+    return self;
+}
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        self.backgroundColor = [UIColor clearColor];
+        [self setupViews];
+    }
+    return self;
+}
+
+- (void)setupViews {
+    [self addSubview:self.chartView];
+    [self requestChartData];
+}
+
+- (AlexChartView *)chartView {
+//    __weak typeof (self)wSelf = self;
+    if (!_chartView) {
+        _chartView = [[AlexChartView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        _chartView.backgroundColor = [UIColor whiteColor];
+        _chartView.borderColor = [UIColor greenColor];
+        _chartView.gridBackgroundColor = [UIColor clearColor];
+        _chartView.borderLineWidth = 2.0f;
+        _chartView.data.sizeRatio = 0.5f;
+        _chartView.data.lineSet.drawAvgLine = YES;
+        _chartView.data.lineSet.lineWidth = 1.0f;
+        _chartView.data.lineSet.lineColor = [UIColor brownColor];
+    }
+    return _chartView;
+}
+
+- (void)requestChartData {
+    [self requestTrend:nil block:^(NSArray *result) {
+        NSMutableArray *dataSets = [NSMutableArray array];
+        for (KLineDataModel *model in result) {
+            AlexDataSet *entity = [[AlexDataSet alloc] init];
+            entity.volume = model.volume.floatValue;
+            entity.price = model.price.floatValue;
+            entity.avergePrice = model.averagePrice.floatValue;
+            [dataSets addObject:entity];
+        }
+        [self refreshChartData:dataSets];
     }];
-    
-    self.quoteView = [[QuoteView alloc] initWithFrame:CGRectMake(0, 450, kScreenWidth, 200)];
-    [self.view addSubview:self.quoteView];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)refreshChartData:(NSMutableArray *)dataArr {
+    [self.chartView setupWithData:dataArr];
 }
 
-
-- (void)requestTrend:(NSString *)string block:(void(^)(NSArray*))block {
+- (void)requestTrend:(NSString *)string block:(void(^)(NSArray*result))block {
     NSString *urlStr = [NSString stringWithFormat:@"http://test.xgb.io:3000/q/quote/v1/trend?prod_code=300264.SZ&fields=last_px,business_amount,avg_px"];
     LNRequest * request = [[LNRequest alloc] init];
     request.url = urlStr;
@@ -61,7 +85,7 @@
         //"300264.SZ":  数组，里面包含K线图的数据
         //"fields":     {min_time,last_px,business_amount,avg_px}
         
-//        NSString* hsSymbol = [Util WSCNSymbolToHSSymbol:string];
+        //        NSString* hsSymbol = [Util WSCNSymbolToHSSymbol:string];
         
         NSArray* fields = [trendInfo valueForKey:@"fields"];
         NSInteger lastPriceIndex = [fields indexOfObject:@"last_px"];

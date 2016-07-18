@@ -132,6 +132,7 @@
     CGContextMoveToPoint(context, startPoint.x, startPoint.y);
     CGContextAddLineToPoint(context, endPoint.x, endPoint.y);
     CGContextDrawPath(context, kCGPathStroke);
+    CGContextStrokePath(context);
 }
 
 #pragma mark - 绘制折线
@@ -140,6 +141,7 @@
                color:(nullable UIColor *)color
               points:(nullable NSArray *)points
                width:(CGFloat)width {
+    CGContextSetShouldAntialias(context, YES);
     CGContextSetLineWidth(context, width);
     CGContextSetStrokeColorWithColor(context, color.CGColor);
     for (NSInteger i = 0; i < points.count; i++) {
@@ -150,8 +152,8 @@
         }else {
             CGContextAddLineToPoint(context, point.x, point.y);
         }
-        CGContextDrawPath(context, kCGPathStroke);
     }
+    CGContextStrokePath(context);
 }
 
 #pragma mark - 绘制虚线
@@ -177,8 +179,8 @@
 
 + (void)drawText:(nullable CGContextRef)context
             text:(nullable NSString *)text
-           align:(NSTextAlignment)align
            point:(CGPoint)point
+           align:(NSTextAlignment)align
            attrs:(nullable NSDictionary<NSString *, id> *)attrs {
     UIGraphicsPushContext(context);
     [text drawAtPoint:point withAttributes:attrs];

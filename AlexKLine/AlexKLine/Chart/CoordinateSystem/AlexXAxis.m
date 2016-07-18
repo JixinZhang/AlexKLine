@@ -17,7 +17,7 @@
     return self;
 }
 
-- (void)setupValues:()data {
+- (void)setupValues:(AlexChartData *)data {
     _values = [@[@"09:30",@"10:30",@"11:30/13:00",@"14:00",@"15:00"] mutableCopy];
 }
 @end

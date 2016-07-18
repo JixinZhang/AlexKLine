@@ -86,8 +86,8 @@ typedef NS_ENUM(NSInteger, TriangleDirection) {
 
 + (void)drawText:(nullable CGContextRef)context
             text:(nullable NSString *)text
-           align:(NSTextAlignment)align
            point:(CGPoint)point
+           align:(NSTextAlignment)align
            attrs:(nullable NSDictionary<NSString *, id> *)attrs;
 
 #pragma mark - 绘制三角形

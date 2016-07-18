@@ -100,7 +100,6 @@
     }
     
     [AlexChartUtils drawCircles:context fillColor:[UIColor brownColor] points:points radius:2.0f];
-    
     [self setNeedsDisplay];
     [self setNeedsLayout];
     
@@ -152,7 +151,10 @@
     [AlexChartUtils drawLine:context color:[UIColor redColor] width:2 startPoint:CGPointMake(45, 25) endPoint:CGPointMake(45, 55)];
     
     //文字
-    [AlexChartUtils drawText:context text:@"7月12日" align:NSTextAlignmentCenter point:CGPointMake(60, 30) attrs:nil];
+    [AlexChartUtils drawText:context text:@"7月12日"
+                       point:CGPointMake(60, 30)
+                       align:NSTextAlignmentCenter
+                       attrs:nil];
     
     //三角形
     [AlexChartUtils drawTriangle:context lineColor:[UIColor blackColor] fillColor:[UIColor blueColor] centerPoint:CGPointMake(30, 350) length:40 lineWidth:1.0 direction:TriangleDirectionUp];

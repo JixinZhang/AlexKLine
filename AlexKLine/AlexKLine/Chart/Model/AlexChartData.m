@@ -25,6 +25,7 @@
         _gapRatio = 0.17;
         _xVals = [NSMutableArray array];
         _dataSets = [NSMutableArray array];
+        _lineSet = [[AlexChartLineSet alloc]init];
         
     }
     return self;
@@ -67,9 +68,17 @@
 - (void)computeLastStartAndLastEnd {
     _lastEnd = _dataSets.count;
     if (_dataSets.count >= _valCount) {
-        _lastEnd = _dataSets.count - _valCount;
+//        _lastEnd = _dataSets.count - _valCount;
     }else {
         _lastStart = 0;
+    }
+}
+
+- (BOOL)hasEmptyNum {
+    if (_emptyStartNum > 0 || _emptyEndNum > 0) {
+        return YES;
+    }else {
+        return NO;
     }
 }
 
@@ -93,13 +102,13 @@
         }
         
         if (entity.avergePrice) {
-            if (_yMin > entity.price) {
-                _yMin = entity.price;
+            if (_yMin > entity.avergePrice) {
+                _yMin = entity.avergePrice;
                 _yAxisMin = i;
             }
             
-            if (_yMax < entity.price) {
-                _yMax = entity.price;
+            if (_yMax < entity.avergePrice) {
+                _yMax = entity.avergePrice;
                 _yAxisMax = i;
             }
         }
@@ -116,5 +125,25 @@
     [_lineSet.points removeAllObjects];
     [_lineSet.avgPoints removeAllObjects];
     [_lineSet.fillPoints removeAllObjects];
+    
+    _drawScale = _viewHandler.contentHeight * _sizeRatio / (_yMax - _yMin);
+    CGFloat emptyHeight = _viewHandler.contentHeight * (1 - _sizeRatio) / 2;
+    CGFloat volumeWidth = _viewHandler.contentWidth / _valCount;
+    
+    for (NSInteger i = _lastStart; i < _lastEnd; i++) {
+        AlexDataSet *dataSet = _dataSets[i];
+        CGFloat left = (_viewHandler.contentLeft + volumeWidth * i) + volumeWidth * _gapRatio;
+        CGFloat startX = left + (volumeWidth - volumeWidth * _gapRatio) / 2;
+        CGFloat startY = (_yMax - dataSet.price) *_drawScale + _viewHandler.contentTop + emptyHeight;
+        CGPoint StartPoint = CGPointMake(startX, startY);
+        [_lineSet.points addObject:[NSValue valueWithCGPoint:StartPoint]];
+        
+        //
+        if ((_lineSet.isDrawAvgLine)) {
+            CGFloat avgStartY = (_yMax - dataSet.avergePrice) * _drawScale + _viewHandler.contentTop + emptyHeight;
+            CGPoint avgPoint = CGPointMake(startX, avgStartY);
+            [_lineSet.avgPoints addObject:[NSValue valueWithCGPoint:avgPoint]];
+        }
+    }
 }
 @end

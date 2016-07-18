@@ -7,10 +7,12 @@
 //
 
 #import "AlexAxisBase.h"
+@class AlexChartData;
 
 @interface AlexXAxis : AlexAxisBase
 
 @property (nonatomic, assign) NSInteger labelCount;
 @property (nonatomic, strong) NSMutableArray *values;
 
+- (void)setupValues:(AlexChartData *)data;
 @end
