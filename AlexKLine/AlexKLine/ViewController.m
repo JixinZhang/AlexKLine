@@ -12,6 +12,7 @@
 #import "LNNetWorking.h"
 #import "KLineDataModel.h"
 #import "QuoteView.h"
+#import "RoundedRectView.h"
 
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kScreenheight [UIScreen mainScreen].bounds.size.height
@@ -20,6 +21,7 @@
 
 @property (nonatomic, strong) AKLineView *kLineView;
 @property (nonatomic, strong) QuoteView *quoteView;
+@property (nonatomic, strong) RoundedRectView *roundedRect;
 @end
 
 @implementation ViewController
@@ -41,6 +43,12 @@
     
     self.quoteView = [[QuoteView alloc] initWithFrame:CGRectMake(0, 450, kScreenWidth, 200)];
     [self.view addSubview:self.quoteView];
+    
+    self.roundedRect = [[RoundedRectView alloc] initWithFrame:CGRectMake(150, 450, 38, 25)];
+    self.roundedRect.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:self.roundedRect];
+    
+    [self testRequest];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -109,6 +117,22 @@
         
     } fail:^(NSError *error) {
         NSLog(@"request K line Data fail");
+    }];
+}
+
+- (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)ctx {
+  
+}
+
+- (void)testRequest {
+    NSString *urlStr = [NSString stringWithFormat:@"http://221.4.128.177:8000/fe-oauth/rest/transaction/buy/get-fee?productCodeId=7655&investmentAmount=1000&referral=WSC"];
+    LNRequest * request = [[LNRequest alloc] init];
+    request.url = urlStr;
+    request.requestMethod = LNRequestMethodPost;
+    [LNNetWorking postWithRequest:request success:^(id response) {
+        NSLog(@"%@",response);
+    } fail:^(NSError *error) {
+        
     }];
 }
 

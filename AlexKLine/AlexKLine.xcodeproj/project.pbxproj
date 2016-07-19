@@ -32,6 +32,8 @@
 		DA595D291D378E2C00300EEE /* AlexChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA595D281D378E2C00300EEE /* AlexChartView.m */; };
 		DA595D2E1D37913000300EEE /* AlexChartData.m in Sources */ = {isa = PBXBuildFile; fileRef = DA595D2D1D37913000300EEE /* AlexChartData.m */; };
 		DA595D311D37990700300EEE /* AlexChartHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = DA595D301D37990700300EEE /* AlexChartHandler.m */; };
+		DA8F89341D3DBF36005AFA8D /* CustomLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8F89331D3DBF36005AFA8D /* CustomLayer.m */; };
+		DA8F89371D3DCBB6005AFA8D /* RoundedRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8F89361D3DCBB6005AFA8D /* RoundedRectView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +85,10 @@
 		DA595D2D1D37913000300EEE /* AlexChartData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexChartData.m; sourceTree = "<group>"; };
 		DA595D2F1D37990700300EEE /* AlexChartHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlexChartHandler.h; sourceTree = "<group>"; };
 		DA595D301D37990700300EEE /* AlexChartHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexChartHandler.m; sourceTree = "<group>"; };
+		DA8F89321D3DBF36005AFA8D /* CustomLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLayer.h; sourceTree = "<group>"; };
+		DA8F89331D3DBF36005AFA8D /* CustomLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLayer.m; sourceTree = "<group>"; };
+		DA8F89351D3DCBB6005AFA8D /* RoundedRectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundedRectView.h; sourceTree = "<group>"; };
+		DA8F89361D3DCBB6005AFA8D /* RoundedRectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundedRectView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +161,10 @@
 			children = (
 				789F201E1CC0D209000C3060 /* AKLineView.h */,
 				789F201F1CC0D209000C3060 /* AKLineView.m */,
+				DA8F89321D3DBF36005AFA8D /* CustomLayer.h */,
+				DA8F89331D3DBF36005AFA8D /* CustomLayer.m */,
+				DA8F89351D3DCBB6005AFA8D /* RoundedRectView.h */,
+				DA8F89361D3DCBB6005AFA8D /* RoundedRectView.m */,
 			);
 			path = AKLine;
 			sourceTree = "<group>";
@@ -338,12 +348,14 @@
 				789F202B1CC0D283000C3060 /* LNNetWorking.m in Sources */,
 				789F200B1CC0D163000C3060 /* AppDelegate.m in Sources */,
 				789F202C1CC0D283000C3060 /* LNRequest.m in Sources */,
+				DA8F89371D3DCBB6005AFA8D /* RoundedRectView.m in Sources */,
 				789F20201CC0D209000C3060 /* AKLineView.m in Sources */,
 				DA29694F1D38EF440047E44A /* AlexDataSet.m in Sources */,
 				DA0B0C4F1D3CC8F6005B0B1F /* AlexDataRender.m in Sources */,
 				DA0B0C531D3CCF1D005B0B1F /* QuoteView.m in Sources */,
 				DA0B0C4C1D3CC848005B0B1F /* AlexRenderBase.m in Sources */,
 				789F20081CC0D163000C3060 /* main.m in Sources */,
+				DA8F89341D3DBF36005AFA8D /* CustomLayer.m in Sources */,
 				DA595D311D37990700300EEE /* AlexChartHandler.m in Sources */,
 				784316E21CCF571E00D4CA15 /* KLineDataModel.m in Sources */,
 			);

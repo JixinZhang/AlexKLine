@@ -16,6 +16,7 @@
          fillcolor:(UIColor *)fillColor
             radius:(CGFloat)radius
              point:(CGPoint)point {
+    CGContextSetShouldAntialias(context, YES);
     CGContextSetFillColorWithColor(context, fillColor.CGColor);
     CGContextAddArc(context, point.x, point.y, radius, 0, M_PI * 2, 0);
     CGContextDrawPath(context, kCGPathFill);
@@ -32,6 +33,7 @@
           fillColor:(nullable UIColor *)fillColor
              points:(nullable NSArray *)points
              radius:(CGFloat)radius {
+    CGContextSetShouldAntialias(context, YES);
     CGContextSetFillColorWithColor(context, fillColor.CGColor);
     for (NSInteger i = 0; i < points.count; i++) {
         NSValue *value = points[i];
@@ -49,6 +51,7 @@
                    lineWidth:(CGFloat)lineWidth
                       radius:(CGFloat)radius
                        point:(CGPoint)point {
+    CGContextSetShouldAntialias(context, YES);
     CGContextSetLineWidth(context, lineWidth);
     CGContextSetStrokeColorWithColor(context, lineColor.CGColor);   //线的填充色
     CGContextSetFillColorWithColor(context, fillColor.CGColor);     //圆的填充色
@@ -68,6 +71,7 @@
 + (void)drawRect:(nullable CGContextRef)context
            color:(nullable UIColor*)color
             rect:(CGRect)rect {
+    CGContextSetShouldAntialias(context, YES);
     CGContextSetFillColorWithColor(context, color.CGColor);
     CGContextAddRect(context, rect);
     CGContextDrawPath(context, kCGPathFill);
@@ -80,6 +84,7 @@
        fillColor:(nullable UIColor *)fillColor
        lineWidht:(CGFloat)lineWidth
             rect:(CGRect)rect; {
+    CGContextSetShouldAntialias(context, YES);
     //边框的宽度
     CGContextSetLineWidth(context, lineWidth);
     //边框的颜色
@@ -104,6 +109,7 @@
     CGFloat width = rect.size.width;
     CGFloat height = rect.size.height;
     
+    CGContextSetShouldAntialias(context, YES);
     CGContextSetLineWidth(context, lineWidth);
     CGContextSetStrokeColorWithColor(context, lineColor.CGColor);
     CGContextSetFillColorWithColor(context, fillColor.CGColor);
@@ -127,6 +133,7 @@
            width:(CGFloat)width
       startPoint:(CGPoint)startPoint
         endPoint:(CGPoint)endPoint {
+    CGContextSetShouldAntialias(context, YES);
     CGContextSetLineWidth(context, width);
     CGContextSetStrokeColorWithColor(context, color.CGColor);
     CGContextMoveToPoint(context, startPoint.x, startPoint.y);
@@ -196,6 +203,7 @@
               length:(CGFloat)length
            lineWidth:(CGFloat)lineWidth
            direction:(TriangleDirection)direction {
+    CGContextSetShouldAntialias(context, YES);
     CGContextSetLineWidth(context, lineWidth);
     CGContextSetStrokeColorWithColor(context, lineColor.CGColor);
     CGContextSetFillColorWithColor(context, fillColor.CGColor);
@@ -244,6 +252,7 @@
            fillColor:(nullable UIColor *)fillColor
             pointArr:(nullable NSArray *)pointArr
            lineWidth:(CGFloat)lineWidth {
+    CGContextSetShouldAntialias(context, YES);
     CGContextSetLineWidth(context, lineWidth);
     CGContextSetStrokeColorWithColor(context, lineColor.CGColor);
     CGContextSetFillColorWithColor(context, fillColor.CGColor);
