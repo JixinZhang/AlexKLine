@@ -47,8 +47,6 @@
     self.roundedRect = [[RoundedRectView alloc] initWithFrame:CGRectMake(150, 450, 38, 25)];
     self.roundedRect.backgroundColor = [UIColor clearColor];
     [self.view addSubview:self.roundedRect];
-    
-    [self testRequest];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -122,18 +120,6 @@
 
 - (void)drawLayer:(CALayer *)layer inContext:(CGContextRef)ctx {
   
-}
-
-- (void)testRequest {
-    NSString *urlStr = [NSString stringWithFormat:@"http://221.4.128.177:8000/fe-oauth/rest/transaction/buy/get-fee?productCodeId=7655&investmentAmount=1000&referral=WSC"];
-    LNRequest * request = [[LNRequest alloc] init];
-    request.url = urlStr;
-    request.requestMethod = LNRequestMethodPost;
-    [LNNetWorking postWithRequest:request success:^(id response) {
-        NSLog(@"%@",response);
-    } fail:^(NSError *error) {
-        
-    }];
 }
 
 @end

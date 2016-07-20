@@ -44,13 +44,14 @@
     if (!_chartView) {
         _chartView = [[AlexChartView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
         _chartView.backgroundColor = [UIColor whiteColor];
-        _chartView.borderColor = [UIColor greenColor];
+        _chartView.borderColor = [UIColor blackColor];
         _chartView.gridBackgroundColor = [UIColor clearColor];
-        _chartView.borderLineWidth = 2.0f;
-        _chartView.data.sizeRatio = 0.5f;
+        _chartView.borderLineWidth = 1.0f;
+        _chartView.data.sizeRatio = 0.8f;
         _chartView.data.lineSet.drawAvgLine = YES;
         _chartView.data.lineSet.lineWidth = 1.0f;
-        _chartView.data.lineSet.lineColor = [UIColor brownColor];
+        _chartView.data.lineSet.lineColor = [UIColor redColor];
+        [_chartView.viewHandler restrainViewPortOffsetLeft:10 offsetTop:5 offsetRight:10 offsetBottom:10];
     }
     return _chartView;
 }
