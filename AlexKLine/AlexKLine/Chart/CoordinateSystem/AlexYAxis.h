@@ -8,9 +8,27 @@
 
 #import "AlexAxisBase.h"
 
+typedef NS_ENUM(NSUInteger, YAxisLabelPosition) {
+    YAxisLabelPositionOutSideChart = 0,
+    YAxisLabelPositionInSideChart
+};
+
+typedef NS_ENUM(NSUInteger, AxisDependency) {
+    AxisDependencyLeft = 0,
+    AxisDependencyRight
+};
+@class AlexChartData;
 @interface AlexYAxis : AlexAxisBase
 
 @property (nonatomic, assign) NSInteger labelCount;
 @property (nonatomic, strong) NSMutableArray *values;
+@property (nonatomic, assign) AxisDependency yPosition;
+@property (nonatomic, assign) YAxisLabelPosition labelPosition;
+
++ (instancetype)initWithType:(AxisDependency)position;
+
+- (void)setupValues:(AlexChartData *)data;
+- (void)setupKLineValues:(AlexChartData *)data;
+- (void)setupVolumeValues:(AlexChartData *)data;
 
 @end
