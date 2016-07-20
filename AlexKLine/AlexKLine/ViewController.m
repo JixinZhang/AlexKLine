@@ -28,25 +28,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor blackColor];
-    __weak typeof (self)weakSelf = self;
-    [self requestTrend:nil block:^(NSArray *dataArray) {
-        weakSelf.kLineView = [[AKLineView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 450)];
-        weakSelf.kLineView.backgroundColor = [UIColor grayColor];
-        weakSelf.kLineView.xAxisWidth = [UIScreen mainScreen].bounds.size.width - 10;
-        weakSelf.kLineView.yAxisHeightOfKLine = 100;
-        weakSelf.kLineView.yAxisHeightOfVolume = 70;
-        weakSelf.kLineView.dataArr = dataArray;
-        weakSelf.kLineView.backgroundColor = [UIColor whiteColor];
-        [weakSelf.view addSubview:weakSelf.kLineView];
-    }];
+//    self.view.backgroundColor = [UIColor blackColor];
+//    __weak typeof (self)weakSelf = self;
+//    [self requestTrend:nil block:^(NSArray *dataArray) {
+//        weakSelf.kLineView = [[AKLineView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 450)];
+//        weakSelf.kLineView.backgroundColor = [UIColor grayColor];
+//        weakSelf.kLineView.xAxisWidth = [UIScreen mainScreen].bounds.size.width - 10;
+//        weakSelf.kLineView.yAxisHeightOfKLine = 100;
+//        weakSelf.kLineView.yAxisHeightOfVolume = 70;
+//        weakSelf.kLineView.dataArr = dataArray;
+//        weakSelf.kLineView.backgroundColor = [UIColor whiteColor];
+//        [weakSelf.view addSubview:weakSelf.kLineView];
+//    }];
     
-    self.quoteView = [[QuoteView alloc] initWithFrame:CGRectMake(0, 450, kScreenWidth, 200)];
+    self.quoteView = [[QuoteView alloc] initWithFrame:CGRectMake(0, 20, kScreenWidth, 250)];
     [self.view addSubview:self.quoteView];
     
-    self.roundedRect = [[RoundedRectView alloc] initWithFrame:CGRectMake(150, 450, 38, 25)];
-    self.roundedRect.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:self.roundedRect];
+//    self.roundedRect = [[RoundedRectView alloc] initWithFrame:CGRectMake(150, 450, 38, 25)];
+//    self.roundedRect.backgroundColor = [UIColor clearColor];
+//    [self.view addSubview:self.roundedRect];
 }
 
 - (void)didReceiveMemoryWarning {

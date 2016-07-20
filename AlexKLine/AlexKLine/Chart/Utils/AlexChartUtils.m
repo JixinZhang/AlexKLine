@@ -84,6 +84,7 @@
        fillColor:(nullable UIColor *)fillColor
        lineWidht:(CGFloat)lineWidth
             rect:(CGRect)rect; {
+    CGContextSaveGState(context);
     CGContextSetShouldAntialias(context, YES);
     //边框的宽度
     CGContextSetLineWidth(context, lineWidth);
@@ -94,6 +95,7 @@
     
     CGContextAddRect(context, rect);
     CGContextDrawPath(context, kCGPathFillStroke);
+    CGContextRestoreGState(context);
 }
 
 #pragma markd - 绘制圆角矩形

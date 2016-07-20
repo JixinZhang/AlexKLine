@@ -51,7 +51,18 @@
         _chartView.data.lineSet.drawAvgLine = YES;
         _chartView.data.lineSet.lineWidth = 1.0f;
         _chartView.data.lineSet.lineColor = [UIColor redColor];
-        [_chartView.viewHandler restrainViewPortOffsetLeft:10 offsetTop:5 offsetRight:10 offsetBottom:10];
+        
+        _chartView.leftAxis.drawGridLinesEnabled = YES;
+        _chartView.leftAxis.drawLabelsEnabled = YES;
+        
+        _chartView.rightAxis.drawGridLinesEnabled = YES;
+        _chartView.rightAxis.drawLabelsEnabled = YES;
+        
+        _chartView.xAxis.drawGridLinesEnabled = YES;
+        _chartView.xAxis.drawLabelsEnabled = YES;
+        
+        
+        [_chartView.viewHandler restrainViewPortOffsetLeft:10 offsetTop:5 offsetRight:10 offsetBottom:20];
     }
     return _chartView;
 }

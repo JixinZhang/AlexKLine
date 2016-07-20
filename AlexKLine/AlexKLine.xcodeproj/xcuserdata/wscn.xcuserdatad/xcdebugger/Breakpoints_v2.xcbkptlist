@@ -10,12 +10,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AlexKLine/Chart/Utils/AlexChartUtils.m"
-            timestampString = "490590211.141421"
+            timestampString = "490699460.169289"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
             landmarkName = "+drawPolyline:color:points:width:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AlexKLine/Chart/View/AlexChartView.m"
+            timestampString = "490698949.837666"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "-setupWithData:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

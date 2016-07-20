@@ -27,6 +27,8 @@
 		DA1022BA1D3648B600E0CBEC /* AlexXAxis.m in Sources */ = {isa = PBXBuildFile; fileRef = DA1022B91D3648B600E0CBEC /* AlexXAxis.m */; };
 		DA29694F1D38EF440047E44A /* AlexDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = DA29694E1D38EF440047E44A /* AlexDataSet.m */; };
 		DA2969521D38F2F20047E44A /* AlexChartLineSet.m in Sources */ = {isa = PBXBuildFile; fileRef = DA2969511D38F2F20047E44A /* AlexChartLineSet.m */; };
+		DA3E208C1D3F567B00E4F831 /* AlexXAxisRender.m in Sources */ = {isa = PBXBuildFile; fileRef = DA3E208B1D3F567B00E4F831 /* AlexXAxisRender.m */; };
+		DA3E208F1D3F63D400E4F831 /* AlexYAxisRender.m in Sources */ = {isa = PBXBuildFile; fileRef = DA3E208E1D3F63D400E4F831 /* AlexYAxisRender.m */; };
 		DA595D221D376E8100300EEE /* AlexYAxis.m in Sources */ = {isa = PBXBuildFile; fileRef = DA595D211D376E8100300EEE /* AlexYAxis.m */; };
 		DA595D261D378E1900300EEE /* AlexChartBase.m in Sources */ = {isa = PBXBuildFile; fileRef = DA595D251D378E1900300EEE /* AlexChartBase.m */; };
 		DA595D291D378E2C00300EEE /* AlexChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA595D281D378E2C00300EEE /* AlexChartView.m */; };
@@ -75,6 +77,10 @@
 		DA29694E1D38EF440047E44A /* AlexDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexDataSet.m; sourceTree = "<group>"; };
 		DA2969501D38F2F20047E44A /* AlexChartLineSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlexChartLineSet.h; sourceTree = "<group>"; };
 		DA2969511D38F2F20047E44A /* AlexChartLineSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexChartLineSet.m; sourceTree = "<group>"; };
+		DA3E208A1D3F567B00E4F831 /* AlexXAxisRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlexXAxisRender.h; sourceTree = "<group>"; };
+		DA3E208B1D3F567B00E4F831 /* AlexXAxisRender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexXAxisRender.m; sourceTree = "<group>"; };
+		DA3E208D1D3F63D400E4F831 /* AlexYAxisRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlexYAxisRender.h; sourceTree = "<group>"; };
+		DA3E208E1D3F63D400E4F831 /* AlexYAxisRender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexYAxisRender.m; sourceTree = "<group>"; };
 		DA595D201D376E8100300EEE /* AlexYAxis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlexYAxis.h; sourceTree = "<group>"; };
 		DA595D211D376E8100300EEE /* AlexYAxis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexYAxis.m; sourceTree = "<group>"; };
 		DA595D241D378E1900300EEE /* AlexChartBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlexChartBase.h; sourceTree = "<group>"; };
@@ -227,6 +233,10 @@
 				DA0B0C4B1D3CC848005B0B1F /* AlexRenderBase.m */,
 				DA0B0C4D1D3CC8F6005B0B1F /* AlexDataRender.h */,
 				DA0B0C4E1D3CC8F6005B0B1F /* AlexDataRender.m */,
+				DA3E208A1D3F567B00E4F831 /* AlexXAxisRender.h */,
+				DA3E208B1D3F567B00E4F831 /* AlexXAxisRender.m */,
+				DA3E208D1D3F63D400E4F831 /* AlexYAxisRender.h */,
+				DA3E208E1D3F63D400E4F831 /* AlexYAxisRender.m */,
 			);
 			path = ChartRender;
 			sourceTree = "<group>";
@@ -334,6 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA3E208F1D3F63D400E4F831 /* AlexYAxisRender.m in Sources */,
 				DA595D2E1D37913000300EEE /* AlexChartData.m in Sources */,
 				DA595D291D378E2C00300EEE /* AlexChartView.m in Sources */,
 				789F202D1CC0D283000C3060 /* LNResponse.m in Sources */,
@@ -354,6 +365,7 @@
 				DA0B0C4F1D3CC8F6005B0B1F /* AlexDataRender.m in Sources */,
 				DA0B0C531D3CCF1D005B0B1F /* QuoteView.m in Sources */,
 				DA0B0C4C1D3CC848005B0B1F /* AlexRenderBase.m in Sources */,
+				DA3E208C1D3F567B00E4F831 /* AlexXAxisRender.m in Sources */,
 				789F20081CC0D163000C3060 /* main.m in Sources */,
 				DA8F89341D3DBF36005AFA8D /* CustomLayer.m in Sources */,
 				DA595D311D37990700300EEE /* AlexChartHandler.m in Sources */,

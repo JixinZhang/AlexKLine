@@ -68,7 +68,7 @@
     return _contentRect.origin.x + _contentRect.size.width;
 }
 
-- (CGFloat)contentBotom {
+- (CGFloat)contentBottom {
     return  _contentRect.origin.y + _contentRect.size.height;
 }
 

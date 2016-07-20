@@ -39,7 +39,7 @@
 - (CGFloat)contentTop;
 - (CGFloat)contentLeft;
 - (CGFloat)contentRight;
-- (CGFloat)contentBotom;
+- (CGFloat)contentBottom;
 - (CGFloat)contentWidth;
 - (CGFloat)contentHeight;
 
