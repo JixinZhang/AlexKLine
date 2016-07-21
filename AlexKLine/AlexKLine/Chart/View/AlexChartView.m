@@ -81,7 +81,7 @@
     
     [self.data computeMinMax];
     [self.xAxis setupValues:self.data];
-//    [self.leftAxis setupValues:self.data];
+    [self.leftAxis setupValues:self.data];
 }
 
 - (void)drawData:(CGContextRef)context {

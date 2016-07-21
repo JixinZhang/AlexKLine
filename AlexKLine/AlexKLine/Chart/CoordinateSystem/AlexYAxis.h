@@ -9,8 +9,8 @@
 #import "AlexAxisBase.h"
 
 typedef NS_ENUM(NSUInteger, YAxisLabelPosition) {
-    YAxisLabelPositionOutSideChart = 0,
-    YAxisLabelPositionInSideChart
+    YAxisLabelPositionOutsideChart = 0,
+    YAxisLabelPositionInsideChart
 };
 
 typedef NS_ENUM(NSUInteger, AxisDependency) {

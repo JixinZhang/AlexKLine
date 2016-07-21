@@ -40,6 +40,46 @@
         //计算涨跌幅
 #warning 添加计算涨跌幅
     }
-//    [self setupValues];
+    [self setupValues];
 }
+
+- (void)setupValues {
+    NSMutableArray  *valuesArr = [NSMutableArray array];
+    CGFloat price = (self.axisMaximun - self.axisMinimun) / (_labelCount - 1);
+    
+    if (_labelPosition == YAxisLabelPositionInsideChart) {
+        for (NSInteger i = 0; i < _labelCount; i ++) {
+            if (i ==0 || i == _labelCount -1) {
+                if (_yPosition == AxisDependencyLeft) {
+                    [valuesArr addObject:[NSString stringWithFormat:@"%.2f",self.axisMaximun - (i * price)]];
+                }else {
+                    [valuesArr addObject:[NSString stringWithFormat:@"%.2f％",self.axisMaximun - (i * price)]];
+                }
+            }else {
+                [valuesArr addObject:@""];
+            }
+        }
+    }else {
+        for (NSInteger i = 0; i < _labelCount; i++) {
+            if (_yPosition == AxisDependencyLeft) {
+                [valuesArr addObject:[NSString stringWithFormat:@"%.2f",self.axisMaximun - (i * price)]];
+            }else {
+                [valuesArr addObject:[NSString stringWithFormat:@"%.2f％",self.axisMaximun - (i * price)]];
+            }
+        }
+    }
+    _values = valuesArr;
+}
+
+//- (void)setupKLineValues:(AlexChartData *)data {
+//    if (data.yAxisMax > data.dataSets.count) {
+//        return;
+//    }
+//}
+
+//- (void)setupVolumeValues:(AlexChartData *)data {
+//    NSString *maxString = [NSString stringWithFormat:@"%@",data.yMax];
+//    NSString *statusString =
+//}
+
 @end

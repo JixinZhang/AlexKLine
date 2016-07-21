@@ -70,8 +70,24 @@
         CGFloat yoffset = 2.0f;
         CGFloat xPosition = 0.f;
         NSTextAlignment textAlign = NSTextAlignmentRight;
-        textAlign = NSTextAlignmentRight;
-        xPosition = self.viewHandler.contentLeft - xoffset;
+        
+        if (_yAxis.yPosition == AxisDependencyLeft) {
+            if (_yAxis.labelPosition == YAxisLabelPositionOutsideChart) {
+                textAlign = NSTextAlignmentRight;
+                xPosition = self.viewHandler.contentLeft - xoffset;
+            }else {
+                textAlign = NSTextAlignmentLeft;
+                xPosition = self.viewHandler.contentLeft + xoffset;
+            }
+        }else {
+            if (_yAxis.labelPosition == YAxisLabelPositionOutsideChart) {
+                textAlign = NSTextAlignmentLeft;
+                xPosition = self.viewHandler.contentRight + xoffset;
+            } else {
+                textAlign = NSTextAlignmentRight;
+                xPosition = self.viewHandler.contentRight - xoffset;
+            }
+        }
 
         yoffset = (self.viewHandler.contentHeight) / (_yAxis.values.count - 1);
         [self drawYLabels:context position:xPosition offset:yoffset textAlign:textAlign];

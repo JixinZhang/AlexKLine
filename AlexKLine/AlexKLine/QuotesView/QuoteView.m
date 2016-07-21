@@ -50,11 +50,12 @@
         _chartView.data.sizeRatio = 0.8f;
         _chartView.data.lineSet.drawAvgLine = YES;
         _chartView.data.lineSet.lineWidth = 1.0f;
-        _chartView.data.lineSet.lineColor = [UIColor redColor];
+        _chartView.data.lineSet.lineColor = [UIColor magentaColor];
         
         _chartView.leftAxis.drawGridLinesEnabled = YES;
         _chartView.leftAxis.drawLabelsEnabled = YES;
-        
+        _chartView.leftAxis.labelPosition = YAxisLabelPositionOutsideChart;
+        _chartView.leftAxis.yPosition = AxisDependencyLeft;
         _chartView.rightAxis.drawGridLinesEnabled = YES;
         _chartView.rightAxis.drawLabelsEnabled = YES;
         
@@ -62,7 +63,7 @@
         _chartView.xAxis.drawLabelsEnabled = YES;
         
         
-        [_chartView.viewHandler restrainViewPortOffsetLeft:10 offsetTop:5 offsetRight:10 offsetBottom:20];
+        [_chartView.viewHandler restrainViewPortOffsetLeft:30 offsetTop:5 offsetRight:10 offsetBottom:20];
     }
     return _chartView;
 }

@@ -191,6 +191,11 @@
            point:(CGPoint)point
            align:(NSTextAlignment)align
            attrs:(nullable NSDictionary<NSString *, id> *)attrs {
+    if (align == NSTextAlignmentCenter) {
+        point.x -= [text sizeWithAttributes:attrs].width / 2.0;
+    }else if (align == NSTextAlignmentRight) {
+        point.x -= [text sizeWithAttributes:attrs].width;
+    }
     UIGraphicsPushContext(context);
     [text drawAtPoint:point withAttributes:attrs];
     UIGraphicsPopContext();

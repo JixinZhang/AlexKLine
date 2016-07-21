@@ -85,7 +85,6 @@
                 paraStyle.alignment = NSTextAlignmentCenter;
             }
             if (i == _xAxis.values.count - 1) {
-                point.x = self.viewHandler.contentLeft + i * emptyW - emptyW / 2.0;
                 paraStyle.alignment = NSTextAlignmentRight;
             }
             [AlexChartUtils drawText:context text:_xAxis.values[i] point:point align:paraStyle.alignment attrs:labelAttrs];
