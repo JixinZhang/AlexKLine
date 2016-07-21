@@ -48,7 +48,8 @@
         _chartView.gridBackgroundColor = [UIColor clearColor];
         _chartView.borderLineWidth = 1.0f;
         _chartView.data.sizeRatio = 0.8f;
-        _chartView.data.lineSet.drawAvgLine = YES;
+        _chartView.data.lineSet.drawPoint = YES;
+        _chartView.data.lineSet.pointColor = [UIColor redColor];
         _chartView.data.lineSet.lineWidth = 1.0f;
         _chartView.data.lineSet.lineColor = [UIColor magentaColor];
         

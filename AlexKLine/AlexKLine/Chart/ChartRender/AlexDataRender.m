@@ -22,8 +22,15 @@
     }
     CGContextSaveGState(context);
     
+    //绘制折线（基金，分时线）
     [AlexChartUtils drawPolyline:context color:data.lineSet.lineColor points:data.lineSet.points width:data.lineSet.lineWidth];
     
+    //绘制点
+    if (data.lineSet.drawPoint || data.lineSet.drawAvgPoint) {
+        if (data.lineSet.drawPoint) {
+            [AlexChartUtils drawCircles:context fillColor:data.lineSet.pointColor points:data.lineSet.points radius:data.lineSet.pointRadius];
+        }
+    }
     CGContextRestoreGState(context);
 }
 
