@@ -144,6 +144,24 @@
             CGPoint avgPoint = CGPointMake(startX, avgStartY);
             [_lineSet.avgPoints addObject:[NSValue valueWithCGPoint:avgPoint]];
         }
+        
+        //添加填充色路径
+        if (_lineSet.isFillEnabled) {
+            CGPoint fillPoint = CGPointMake(0, 0);
+            if (i == _lastStart) {
+                fillPoint = CGPointMake(startX, startY);
+                CGPoint startPoint = CGPointMake(startX, _viewHandler.contentBottom);
+                [_lineSet.fillPoints addObject:[NSValue valueWithCGPoint:startPoint]];
+            }
+            
+            fillPoint = CGPointMake(startX, startY);
+            [_lineSet.fillPoints addObject:[NSValue valueWithCGPoint:fillPoint]];
+            
+            if (i == _lastEnd - 1) {
+                CGPoint endPoint = CGPointMake(startX, _viewHandler.contentBottom);
+                [_lineSet.fillPoints addObject:[NSValue valueWithCGPoint:endPoint]];
+            }
+        }
     }
 }
 @end

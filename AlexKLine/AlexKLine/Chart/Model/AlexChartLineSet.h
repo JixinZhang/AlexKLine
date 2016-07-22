@@ -17,6 +17,8 @@
 @property (nonatomic, assign) CGFloat lineWidth;        //线的宽度
 @property (nonatomic, strong) NSMutableArray *points;   //点的坐标
 @property (nonatomic, strong) UIColor *fillColor;       //填充颜色
+@property (nonatomic, strong) UIColor *startFillColor;  //填充颜色
+@property (nonatomic, strong) UIColor *endFillColor;    //填充颜色
 @property (nonatomic, strong) NSMutableArray *fillPoints;//填充点的坐标
 
 @property (nonatomic, strong) UIColor *avgLineColor;    //均线的颜色

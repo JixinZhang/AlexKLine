@@ -22,6 +22,11 @@
     }
     CGContextSaveGState(context);
     
+    //绘制填充色
+    if (data.lineSet.fillEnable) {
+        [AlexChartUtils drawFilledPath:context startColor:data.lineSet.startFillColor endColor:data.lineSet.endFillColor points:data.lineSet.fillPoints alpha:0.5f];
+    }
+    
     //绘制折线（基金，分时线）
     [AlexChartUtils drawPolyline:context color:data.lineSet.lineColor points:data.lineSet.points width:data.lineSet.lineWidth];
     
@@ -31,6 +36,8 @@
             [AlexChartUtils drawCircles:context fillColor:data.lineSet.pointColor points:data.lineSet.points radius:data.lineSet.pointRadius];
         }
     }
+    
+   
     CGContextRestoreGState(context);
 }
 

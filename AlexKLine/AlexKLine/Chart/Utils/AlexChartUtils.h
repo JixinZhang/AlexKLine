@@ -106,4 +106,20 @@ typedef NS_ENUM(NSInteger, TriangleDirection) {
            fillColor:(nullable UIColor *)fillColor
             pointArr:(nullable NSArray *)pointArr
            lineWidth:(CGFloat)lineWidth;
+
+#pragma mark - 根据路径绘制填充色
+
+//渐变色
++ (void)drawFilledPath:(nullable CGContextRef)context
+                  path:(nullable CGPathRef)path
+                 alpha:(CGFloat)alpha
+            startColor:(nullable CGColorRef)startColor
+              endColor:(nullable CGColorRef)endColor;
+
+//通过一组点绘制填充色
++ (void)drawFilledPath:(nullable CGContextRef)context
+            startColor:(nullable UIColor *)startColor
+              endColor:(nullable UIColor *)endColor
+                points:(nullable NSArray *)points
+                 alpha:(CGFloat)alpha;
 @end

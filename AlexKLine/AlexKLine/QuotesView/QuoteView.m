@@ -52,6 +52,7 @@
         _chartView.data.lineSet.pointColor = [UIColor redColor];
         _chartView.data.lineSet.lineWidth = 1.0f;
         _chartView.data.lineSet.lineColor = [UIColor magentaColor];
+        _chartView.data.lineSet.fillEnable = YES;
         
         _chartView.leftAxis.drawGridLinesEnabled = YES;
         _chartView.leftAxis.drawLabelsEnabled = YES;

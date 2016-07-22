@@ -275,6 +275,58 @@
     CGContextAddLines(context, points, 3);
     CGContextClosePath(context);
     CGContextDrawPath(context, kCGPathFillStroke);
+}
 
+#pragma mark - 根据路径绘制填充色
+
+//渐变色
++ (void)drawFilledPath:(nullable CGContextRef)context
+                  path:(nullable CGPathRef)path
+                 alpha:(CGFloat)alpha
+            startColor:(nullable CGColorRef)startColor
+              endColor:(nullable CGColorRef)endColor{
+    
+}
+
+//通过一组点绘制填充色
++ (void)drawFilledPath:(nullable CGContextRef)context
+            startColor:(nullable UIColor *)startColor
+              endColor:(nullable UIColor *)endColor
+                points:(nullable NSArray *)points
+                 alpha:(CGFloat)alpha {
+    
+    CGMutablePathRef fillPath = CGPathCreateMutable();
+    for (NSInteger i = 0; i < points.count; i++) {
+        NSValue *value = points[i];
+        CGPoint point = [value CGPointValue];
+        if (i == 0) {
+            CGPathMoveToPoint(fillPath, NULL, point.x, point.y);
+        }else {
+            CGPathAddLineToPoint(fillPath, NULL, point.x, point.y);
+        }
+        
+        if (i == points.count - 1) {
+            CGPathCloseSubpath(fillPath);
+        }
+    }
+    
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    CGFloat locations[] = {0.0,1.0};
+    NSArray *colors = @[(__bridge id)startColor.CGColor, (__bridge id)endColor.CGColor];
+    CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef)colors, locations);
+    CGRect pathRect = CGPathGetBoundingBox(fillPath);
+    CGPoint startPoint = CGPointMake(CGRectGetMidX(pathRect), CGRectGetMinY(pathRect));
+    CGPoint endPoint = CGPointMake(CGRectGetMidX(pathRect), CGRectGetMaxY(pathRect));
+    
+    CGContextSaveGState(context);
+    CGContextAddPath(context, fillPath);
+    CGContextClip(context);
+    CGContextSetAlpha(context, alpha);
+    CGContextDrawLinearGradient(context, gradient, startPoint, endPoint, 0);
+    CGContextRestoreGState(context);
+    
+    CGGradientRelease(gradient);
+    CGColorSpaceRelease(colorSpace);
+    CGPathRelease(fillPath);
 }
 @end

@@ -36,6 +36,9 @@
         _fillEnable = YES;
         _fillPoints = [NSMutableArray array];
         _fillColor = [UIColor brownColor];
+        _startFillColor = [UIColor colorWithRed:24/255.0 green:96/255.0 blue:254/255.0 alpha:0.95];
+        _endFillColor = [UIColor colorWithRed:24/255.0 green:96/255.0 blue:254/255.0 alpha:0.6];
+
     }
     return self;
 }
