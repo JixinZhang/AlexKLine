@@ -13,6 +13,8 @@
 - (instancetype)init {
     if (self = [super init]) {
         _labelCount = 5;
+        _labelSite = XAxisLabelSiteCenter;
+        _labelPosition = XAxisLabelPositionBottom;
     }
     return self;
 }

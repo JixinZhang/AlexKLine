@@ -23,11 +23,44 @@
 }
 
 - (void)setupWithData:(NSMutableArray *)data {
+    _dragEnabled = NO;
+    _zoomEnabled = NO;
+    
     _leftAxis.drawLabelsEnabled = YES;
     _leftAxis.drawGridLinesEnabled = YES;
     _rightAxis.drawLabelsEnabled = YES;
     
     NSInteger valCount = data.count;
+    self.xAxis.labelSite = XAxisLabelSiteCenter;
+    switch (self.chartViewType) {
+        case ChartViewTypeNormal:
+            break;
+        case ChartViewTypeLine:
+            valCount = 241;
+            break;
+        case ChartViewTypeFiveDayLine:
+            self.xAxis.labelSite = XAxisLabelSiteRight;
+            break;
+        case ChartViewTypeColumnar:
+            valCount = 241;
+            _rightAxis.drawLabelsEnabled = NO;
+            _leftAxis.drawGridLinesEnabled = NO;
+//            self.data.hightlighter.volumeChartType = YES;
+            _leftAxis.drawLabelsEnabled = _leftAxis.labelPosition == YAxisLabelPositionOutsideChart;
+            break;
+        case ChartViewTypeFiveDayColumnar:
+            
+            break;
+        case ChartViewTypeKLine:
+            
+            break;
+        case ChartViewTypeKColumnar:
+            
+            break;
+            
+        default:
+            break;
+    }
     self.data.dataSets = data;
     self.data.valCount = valCount;
     [self.data computeLastStartAndLastEnd];
@@ -85,7 +118,28 @@
 }
 
 - (void)drawData:(CGContextRef)context {
-    [_dataRender drawLineData:context data:self.data];
+    switch (self.chartViewType) {
+        case ChartViewTypeNormal:
+        case ChartViewTypeLine:
+            [_dataRender drawLineData:context data:self.data];
+            break;
+        case ChartViewTypeFiveDayLine:
+        
+            break;
+        case ChartViewTypeKLine:
+            
+            break;
+        case ChartViewTypeColumnar:
+        case ChartViewTypeFiveDayColumnar:
+            
+            break;
+        case ChartViewTypeKColumnar:
+            break;
+            
+        default:
+            break;
+    }
+
 }
 
 @end
