@@ -111,10 +111,32 @@
     if ([self.data hasEmptyNum]) {
         return;
     }
-    
-    [self.data computeMinMax];
-    [self.xAxis setupValues:self.data];
-    [self.leftAxis setupValues:self.data];
+    switch (self.chartViewType) {
+        case ChartViewTypeNormal:
+            [self.data computeMinMax];
+            [self.xAxis setupValues:self.data];
+            [self.leftAxis setupValues:self.data];
+            break;
+        case ChartViewTypeLine:
+            [self.data computeLineMinMax];
+            [self.xAxis setupValues:self.data];
+            [self.leftAxis setupValues:self.data];
+            break;
+        case ChartViewTypeFiveDayLine:
+            
+            break;
+        case ChartViewTypeKLine:
+            
+            break;
+        case ChartViewTypeColumnar:
+        case ChartViewTypeKColumnar:
+        case ChartViewTypeFiveDayColumnar:
+            
+            break;
+        default:
+            break;
+    }
+    [self.rightAxis setupValues:self.data];
 }
 
 - (void)drawData:(CGContextRef)context {

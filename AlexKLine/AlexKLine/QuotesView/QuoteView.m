@@ -36,7 +36,8 @@
 
 - (void)setupViews {
     [self addSubview:self.chartView];
-    [self requestChartData];
+//    [self requestChartData];
+    [self requestChartDataForWeex];
 }
 
 - (AlexChartView *)chartView {
@@ -78,9 +79,26 @@
             entity.volume = model.volume.floatValue;
             entity.price = model.price.floatValue;
             entity.avergePrice = model.averagePrice.floatValue;
+            entity.date = [NSDate dateWithTimeIntervalSince1970:model.start.integerValue];
             [dataSets addObject:entity];
         }
         [self refreshChartData:dataSets];
+    }];
+}
+
+- (void)requestChartDataForWeex {
+    [self getIncomeTrendChartDataWithProductCode:nil Block:^(BOOL isSucceed, id response) {
+        if (isSucceed) {
+            NSMutableArray *dataSets = [NSMutableArray array];
+            for (NSDictionary *model in response) {
+                AlexDataSet *entity = [[AlexDataSet alloc] init];
+                entity.price = [[model valueForKey:@"value"] floatValue];
+                entity.date = [model valueForKey:@"showedDate"];
+                [dataSets addObject:entity];
+            }
+            [self refreshChartData:dataSets];
+
+        }
     }];
 }
 
@@ -150,5 +168,40 @@
         NSLog(@"request K line Data fail");
     }];
 }
+
+-(void)getIncomeTrendChartDataWithProductCode:(NSString *)productCode
+                                        Block:(void(^)(BOOL isSucceed,id response))block {
+    NSString *urlString = @"https://api.ifastps.com.cn/fe-oauth/rest/product/get-performance-by-product-code-and-period?period=month_1&productCode=519097";
+    LNRequest *request = [[LNRequest alloc] init];
+    request.url = urlString;
+    request.requestMethod = LNRequestMethodPost;
+    [LNNetWorking postWithRequest:request success:^(LNResponse *response) {
+        NSLog(@"%@",response.resultDic);
+        NSArray *data = [response.resultDic valueForKey:@"data"];
+        if (data.count != 0) {
+            NSMutableArray *returnData = [NSMutableArray array];
+            for (NSDictionary *dic in data) {
+                NSString *value = [dic valueForKey:@"value"];
+                NSNumber *dateNum = [dic valueForKey:@"showedDate"];
+                dateNum = [NSNumber numberWithLong:dateNum.doubleValue/1000];
+                NSDate *date = [NSDate dateWithTimeIntervalSince1970:dateNum.intValue];
+                NSDictionary *dataDic = [NSDictionary dictionaryWithObjectsAndKeys:value,@"value",date,@"showedDate", nil];
+                [returnData addObject:dataDic];
+            }
+            if (block) {
+                block(YES,returnData);
+            }
+        }else {
+            if (block) {
+                block(NO,response.errorMsg);
+            }
+        }
+    } fail:^(NSError *error) {
+        if (block) {
+            block(NO,error.localizedDescription);
+        }
+    }];
+}
+
 
 @end
