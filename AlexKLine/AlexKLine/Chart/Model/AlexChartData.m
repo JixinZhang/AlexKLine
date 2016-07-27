@@ -101,14 +101,14 @@
             }
         }
         
-        if (entity.avergePrice) {
-            if (_yMin > entity.avergePrice) {
-                _yMin = entity.avergePrice;
+        if (entity.averagePrice) {
+            if (_yMin > entity.averagePrice) {
+                _yMin = entity.averagePrice;
                 _yAxisMin = i;
             }
             
-            if (_yMax < entity.avergePrice) {
-                _yMax = entity.avergePrice;
+            if (_yMax < entity.averagePrice) {
+                _yMax = entity.averagePrice;
                 _yAxisMax = i;
             }
         }
@@ -118,6 +118,35 @@
         _yMin = 0;
     }
     
+    [self computeLinePointsCoordinate];
+}
+
+#pragma mark - 分时计算
+
+- (void)computeLineMinMax {
+    _yMax = CGFLOAT_MIN;
+    _yMin = CGFLOAT_MAX;
+    
+    CGFloat offsetMaxPrice = 0;
+    for (NSInteger i = _lastStart; i < _lastEnd; i++) {
+        AlexDataSet *entity = [_dataSets objectAtIndex:i];
+        if (entity.price == -1) {
+            continue;
+        }
+        offsetMaxPrice = offsetMaxPrice > fabs(entity.price - entity.preClose) ? offsetMaxPrice : fabs(entity.price - entity.preClose);
+    }
+    
+    _yMax = ((AlexDataSet *)[_dataSets firstObject]).preClose + offsetMaxPrice;
+    _yMin = ((AlexDataSet *)[_dataSets firstObject]).preClose - offsetMaxPrice;
+    
+    for (AlexDataSet *model in _dataSets) {
+        model.averagePrice = model.averagePrice < _yMin ? _yMin : model.averagePrice;
+        model.averagePrice = model.averagePrice > _yMax ? _yMax : model.averagePrice;
+    }
+    
+    if (_yMax == _yMin) {
+        _yMin = 0;
+    }
     [self computeLinePointsCoordinate];
 }
 
@@ -140,7 +169,7 @@
         
         //
         if ((_lineSet.isDrawAvgLine)) {
-            CGFloat avgStartY = (_yMax - dataSet.avergePrice) * _drawScale + _viewHandler.contentTop + emptyHeight;
+            CGFloat avgStartY = (_yMax - dataSet.averagePrice) * _drawScale + _viewHandler.contentTop + emptyHeight;
             CGPoint avgPoint = CGPointMake(startX, avgStartY);
             [_lineSet.avgPoints addObject:[NSValue valueWithCGPoint:avgPoint]];
         }

@@ -18,5 +18,6 @@
 @property (nonatomic, assign) NSDate *startTime;    //开始的时间
 @property (nonatomic, assign) NSDate *endTime;      //结束的时间
 
-@property (nonatomic, assign) CGFloat avergePrice;  //平均交易价格
+@property (nonatomic, assign) CGFloat averagePrice;  //平均交易价格
+@property (nonatomic, assign) CGFloat preClose;     //昨收价
 @end

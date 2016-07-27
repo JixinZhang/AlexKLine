@@ -38,7 +38,7 @@
         
         if (dataSet.date) {
             NSDateFormatter* dateFormat = [[NSDateFormatter alloc] init];
-            dateFormat.dateFormat = @"HH:mm";
+            dateFormat.dateFormat = @"yyyy-MM-dd";
             NSString *dataString = [dateFormat stringFromDate:dataSet.date];
             [values addObject:dataString];
         }else {

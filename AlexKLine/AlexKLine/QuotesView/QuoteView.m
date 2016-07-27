@@ -14,6 +14,7 @@
 
 @interface QuoteView()
 @property (nonatomic, strong) AlexChartView *chartView;
+@property (nonatomic, strong) AlexChartView *fundChartView;
 @end
 
 @implementation QuoteView
@@ -36,24 +37,32 @@
 
 - (void)setupViews {
     [self addSubview:self.chartView];
-//    [self requestChartData];
+    [self requestChartData];
+    [self addSubview:self.fundChartView];
     [self requestChartDataForWeex];
 }
 
 - (AlexChartView *)chartView {
 //    __weak typeof (self)wSelf = self;
     if (!_chartView) {
-        _chartView = [[AlexChartView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        _chartView = [[AlexChartView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 200)];
         _chartView.backgroundColor = [UIColor whiteColor];
         _chartView.borderColor = [UIColor blackColor];
         _chartView.gridBackgroundColor = [UIColor clearColor];
         _chartView.borderLineWidth = 1.0f;
+        _chartView.chartViewType = ChartViewTypeLine;
+        
         _chartView.data.sizeRatio = 0.8f;
-        _chartView.data.lineSet.drawPoint = YES;
+        _chartView.data.lineSet.drawPoint = NO;
         _chartView.data.lineSet.pointColor = [UIColor redColor];
         _chartView.data.lineSet.lineWidth = 1.0f;
         _chartView.data.lineSet.lineColor = [UIColor magentaColor];
         _chartView.data.lineSet.fillEnable = YES;
+        
+        //均线
+        _chartView.data.lineSet.drawAvgLine = YES;
+        _chartView.data.lineSet.avgLineColor = [UIColor brownColor];
+        _chartView.data.lineSet.avgLineWidth = 1.0f;
         
         _chartView.leftAxis.drawGridLinesEnabled = YES;
         _chartView.leftAxis.drawLabelsEnabled = YES;
@@ -64,11 +73,43 @@
         
         _chartView.xAxis.drawGridLinesEnabled = YES;
         _chartView.xAxis.drawLabelsEnabled = YES;
+        _chartView.xAxis.labelFont = [UIFont systemFontOfSize:7.0f];
         
         
         [_chartView.viewHandler restrainViewPortOffsetLeft:30 offsetTop:5 offsetRight:10 offsetBottom:20];
     }
     return _chartView;
+}
+
+- (AlexChartView *)fundChartView {
+    if (!_fundChartView) {
+        _fundChartView = [[AlexChartView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.chartView.frame), self.frame.size.width, 200)];
+        _fundChartView.backgroundColor = [UIColor whiteColor];
+        _fundChartView.borderColor = [UIColor blackColor];
+        _fundChartView.gridBackgroundColor = [UIColor clearColor];
+        _fundChartView.borderLineWidth = 1.0f;
+        _fundChartView.data.sizeRatio = 0.8f;
+        _fundChartView.data.lineSet.drawPoint = YES;
+        _fundChartView.data.lineSet.pointColor = [UIColor redColor];
+        _fundChartView.data.lineSet.lineWidth = 1.0f;
+        _fundChartView.data.lineSet.lineColor = [UIColor magentaColor];
+        _fundChartView.data.lineSet.fillEnable = NO;
+        
+        _fundChartView.leftAxis.drawGridLinesEnabled = YES;
+        _fundChartView.leftAxis.drawLabelsEnabled = YES;
+        _chartView.leftAxis.labelPosition = YAxisLabelPositionOutsideChart;
+        _fundChartView.leftAxis.yPosition = AxisDependencyLeft;
+        _fundChartView.rightAxis.drawGridLinesEnabled = YES;
+        _fundChartView.rightAxis.drawLabelsEnabled = YES;
+        
+        _fundChartView.xAxis.drawGridLinesEnabled = YES;
+        _fundChartView.xAxis.drawLabelsEnabled = YES;
+        _fundChartView.xAxis.labelFont = [UIFont systemFontOfSize:7.0f];
+        
+        
+        [_fundChartView.viewHandler restrainViewPortOffsetLeft:30 offsetTop:5 offsetRight:10 offsetBottom:20];
+    }
+    return _fundChartView;
 }
 
 - (void)requestChartData {
@@ -78,8 +119,9 @@
             AlexDataSet *entity = [[AlexDataSet alloc] init];
             entity.volume = model.volume.floatValue;
             entity.price = model.price.floatValue;
-            entity.avergePrice = model.averagePrice.floatValue;
+            entity.averagePrice = model.averagePrice.floatValue;
             entity.date = [NSDate dateWithTimeIntervalSince1970:model.start.integerValue];
+            entity.preClose = [model.preClose floatValue];
             [dataSets addObject:entity];
         }
         [self refreshChartData:dataSets];
@@ -96,7 +138,7 @@
                 entity.date = [model valueForKey:@"showedDate"];
                 [dataSets addObject:entity];
             }
-            [self refreshChartData:dataSets];
+            [self refreshFundChartData:dataSets];
 
         }
     }];
@@ -106,13 +148,20 @@
     [self.chartView setupWithData:dataArr];
 }
 
+- (void)refreshFundChartData:(NSMutableArray *)dataArr {
+    [self.fundChartView setupWithData:dataArr];
+}
+
 - (void)requestTrend:(NSString *)string block:(void(^)(NSArray*result))block {
-    NSString *urlStr = [NSString stringWithFormat:@"http://test.xgb.io:3000/q/quote/v1/trend?prod_code=300264.SZ&fields=last_px,business_amount,avg_px"];
+    NSString *urlStr = [NSString stringWithFormat:@"http://test.xgb.io:3000/q/quote/v1/trend?prod_code=300264.SZ&fields=last_px,avg_px,business_amount,business_balance"];
     LNRequest * request = [[LNRequest alloc] init];
     request.url = urlStr;
     [LNNetWorking getWithRequest:request success:^(LNResponse *response) {
         NSDictionary *dataDic = [response.resultDic valueForKey:@"data"];
         NSDictionary* trendInfo = [dataDic valueForKey:@"trend"];
+        //昨收
+        NSDictionary *real = [dataDic valueForKey:@"real"];
+        NSNumber *preClosePx = [NSNumber numberWithFloat:[[real valueForKey:@"pre_close_px"] floatValue]];
         //得到的trendInfo包含三组key-value
         //"crc":        "300264.SZ"
         //"300264.SZ":  数组，里面包含K线图的数据
@@ -137,7 +186,7 @@
             data.close = @"";
             data.high = @"";
             data.low = @"";
-            
+            data.preClose = [NSString stringWithFormat:@"%.2f",preClosePx.floatValue];
             NSUInteger businessCount = [[trendItem objectAtIndex:businessCountIndex] unsignedIntegerValue];
             data.volume = [NSString stringWithFormat:@"%ld", (long)businessCount - previousBusinessCount];
             data.averagePrice = [NSString stringWithFormat:@"%@", [trendItem objectAtIndex:averagePriceIndex]];

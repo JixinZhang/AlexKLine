@@ -32,4 +32,6 @@ typedef NS_ENUM(NSUInteger, XAxisLabelSite) {
 @property (nonatomic, assign) XAxisLabelPosition labelPosition;
 
 - (void)setupValues:(AlexChartData *)data;
+- (void)setupLineValues:(AlexChartData *)data;
+
 @end

@@ -119,7 +119,7 @@
             break;
         case ChartViewTypeLine:
             [self.data computeLineMinMax];
-            [self.xAxis setupValues:self.data];
+            [self.xAxis setupLineValues:self.data];
             [self.leftAxis setupValues:self.data];
             break;
         case ChartViewTypeFiveDayLine:

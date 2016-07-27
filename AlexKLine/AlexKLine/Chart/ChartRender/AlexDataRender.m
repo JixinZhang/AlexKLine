@@ -30,6 +30,11 @@
     //绘制折线（基金，分时线）
     [AlexChartUtils drawPolyline:context color:data.lineSet.lineColor points:data.lineSet.points width:data.lineSet.lineWidth];
     
+    //绘制均线
+    if (data.lineSet.drawAvgLine) {
+        [AlexChartUtils drawPolyline:context color:data.lineSet.avgLineColor points:data.lineSet.avgPoints width:data.lineSet.avgLineWidth];
+    }
+    
     //绘制点
     if (data.lineSet.drawPoint || data.lineSet.drawAvgPoint) {
         if (data.lineSet.drawPoint) {
