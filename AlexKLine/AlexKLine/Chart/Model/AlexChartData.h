@@ -39,6 +39,7 @@
 
 - (void)computeMinMax;
 - (void)computeLineMinMax;
+- (void)computeKLineMinMax;
 - (void)computeLastStartAndLastEnd;
 
 - (BOOL)hasEmptyNum;

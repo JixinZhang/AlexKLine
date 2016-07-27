@@ -126,7 +126,7 @@
             
             break;
         case ChartViewTypeKLine:
-            
+            [self.data computeKLineMinMax];
             break;
         case ChartViewTypeColumnar:
         case ChartViewTypeKColumnar:

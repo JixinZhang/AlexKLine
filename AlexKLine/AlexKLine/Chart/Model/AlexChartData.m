@@ -193,4 +193,16 @@
         }
     }
 }
+
+#pragma mark -KLine
+
+- (void)computeKLineMinMax {
+    _yMax = CGFLOAT_MIN;
+    _yMin = CGFLOAT_MAX;
+    
+    for (NSInteger i = _lastStart; i < _lastEnd; i++) {
+        AlexDataSet *entity = [_dataSets objectAtIndex:i];
+    }
+}
+
 @end
