@@ -149,7 +149,7 @@
         
             break;
         case ChartViewTypeKLine:
-            
+            [_dataRender DrawCandle:context data:self.data];
             break;
         case ChartViewTypeColumnar:
         case ChartViewTypeFiveDayColumnar:

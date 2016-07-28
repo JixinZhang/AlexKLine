@@ -12,6 +12,8 @@
 @interface AlexDataRender : AlexRenderBase
 
 + (instancetype)initWithHandler:(AlexChartHandler *)handler;
-
 - (void)drawLineData:(CGContextRef)context data:(AlexChartData *)data;
+
+#pragma mark - 绘制蜡烛图
+- (void)DrawCandle:(CGContextRef)context data:(AlexChartData *)data;
 @end
