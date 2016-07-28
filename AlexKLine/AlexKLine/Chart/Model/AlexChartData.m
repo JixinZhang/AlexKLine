@@ -26,7 +26,7 @@
         _xVals = [NSMutableArray array];
         _dataSets = [NSMutableArray array];
         _lineSet = [[AlexChartLineSet alloc]init];
-        
+        _candleSet = [[AlexChartCandleSet alloc] init];
     }
     return self;
 }
@@ -202,7 +202,41 @@
     
     for (NSInteger i = _lastStart; i < _lastEnd; i++) {
         AlexDataSet *entity = [_dataSets objectAtIndex:i];
+        
+        if (i == _lastStart) {
+            if (entity.MA1 == 0) {
+//                [self computeKLineMA];
+            }
+        }
+        
+        if (_yMin > entity.low) {
+            _yMin = entity.low;
+            _yAxisMin = i;
+        }
+        
+        if (_yMax < entity.high) {
+            _yMax = entity.high;
+            _yAxisMax = i;
+        }
+        
+        if (entity.MA1 >= 0) {
+            _yMin = _yMin < entity.MA1 ? _yMin : entity.MA1;
+            _yMax = _yMax > entity.MA1 ? _yMax : entity.MA1;
+        }
+        if (entity.MA2 >= 0) {
+            _yMin = _yMin < entity.MA2 ? _yMin : entity.MA2;
+            _yMax = _yMax > entity.MA2 ? _yMax : entity.MA2;
+        }
+        if (entity.MA3 >= 0) {
+            _yMin = _yMin < entity.MA3 ? _yMin : entity.MA3;
+            _yMax = _yMax > entity.MA3 ? _yMax : entity.MA3;
+        }
     }
+    
+    if (_yMax == _yMin) {
+        _yMin = 0;
+    }
+//    [self computeKlinePointsCoord];
 }
 
 @end

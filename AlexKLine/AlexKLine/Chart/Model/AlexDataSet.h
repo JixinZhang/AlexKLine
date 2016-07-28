@@ -18,6 +18,18 @@
 @property (nonatomic, assign) NSDate *startTime;    //开始的时间
 @property (nonatomic, assign) NSDate *endTime;      //结束的时间
 
+//KLine
+@property (nonatomic, assign) CGFloat open;
+@property (nonatomic, assign) CGFloat close;
+@property (nonatomic, assign) CGFloat high;
+@property (nonatomic, assign) CGFloat low;
+
+@property (nonatomic, assign) CGFloat MA1;
+@property (nonatomic, assign) CGFloat MA2;
+@property (nonatomic, assign) CGFloat MA3;
+@property (nonatomic, assign) CGFloat MA4;
+@property (nonatomic, assign) CGFloat MA5;
+
 @property (nonatomic, assign) CGFloat averagePrice;  //平均交易价格
 @property (nonatomic, assign) CGFloat preClose;     //昨收价
 @end

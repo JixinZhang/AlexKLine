@@ -36,6 +36,7 @@
 		DA595D311D37990700300EEE /* AlexChartHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = DA595D301D37990700300EEE /* AlexChartHandler.m */; };
 		DA8F89341D3DBF36005AFA8D /* CustomLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8F89331D3DBF36005AFA8D /* CustomLayer.m */; };
 		DA8F89371D3DCBB6005AFA8D /* RoundedRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8F89361D3DCBB6005AFA8D /* RoundedRectView.m */; };
+		DACD370B1D49D52900AE4549 /* AlexChartCandleSet.m in Sources */ = {isa = PBXBuildFile; fileRef = DACD370A1D49D52900AE4549 /* AlexChartCandleSet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +96,8 @@
 		DA8F89331D3DBF36005AFA8D /* CustomLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLayer.m; sourceTree = "<group>"; };
 		DA8F89351D3DCBB6005AFA8D /* RoundedRectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundedRectView.h; sourceTree = "<group>"; };
 		DA8F89361D3DCBB6005AFA8D /* RoundedRectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundedRectView.m; sourceTree = "<group>"; };
+		DACD37091D49D52900AE4549 /* AlexChartCandleSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlexChartCandleSet.h; sourceTree = "<group>"; };
+		DACD370A1D49D52900AE4549 /* AlexChartCandleSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexChartCandleSet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,6 +273,8 @@
 				DA29694E1D38EF440047E44A /* AlexDataSet.m */,
 				DA2969501D38F2F20047E44A /* AlexChartLineSet.h */,
 				DA2969511D38F2F20047E44A /* AlexChartLineSet.m */,
+				DACD37091D49D52900AE4549 /* AlexChartCandleSet.h */,
+				DACD370A1D49D52900AE4549 /* AlexChartCandleSet.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -358,6 +363,7 @@
 				DA1022BA1D3648B600E0CBEC /* AlexXAxis.m in Sources */,
 				789F202B1CC0D283000C3060 /* LNNetWorking.m in Sources */,
 				789F200B1CC0D163000C3060 /* AppDelegate.m in Sources */,
+				DACD370B1D49D52900AE4549 /* AlexChartCandleSet.m in Sources */,
 				789F202C1CC0D283000C3060 /* LNRequest.m in Sources */,
 				DA8F89371D3DCBB6005AFA8D /* RoundedRectView.m in Sources */,
 				789F20201CC0D209000C3060 /* AKLineView.m in Sources */,

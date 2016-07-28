@@ -41,9 +41,19 @@
             [AlexChartUtils drawCircles:context fillColor:data.lineSet.pointColor points:data.lineSet.points radius:data.lineSet.pointRadius];
         }
     }
-    
-   
     CGContextRestoreGState(context);
+}
+
+#pragma mark - 绘制蜡烛图
+
+- (void)DrawCandle:(CGContextRef)context data:(AlexChartData *)data {
+    if (!data.dataSets) {
+        return;
+    }
+    CGContextSaveGState(context);
+    data.drawScale = self.viewHandler.contentHeight * data.sizeRatio / (data.yMax - data.yMin);
+    CGFloat emptyHeight = (self.viewHandler.contentHeight * (1 - data.sizeRatio)) / 2.0;
+//    CGFloat candleWidth = data.
 }
 
 @end
