@@ -52,7 +52,7 @@
             
             break;
         case ChartViewTypeKLine:
-            
+            valCount = self.viewHandler.contentWidth / self.data.candleSet.candleWith;
             break;
         case ChartViewTypeKColumnar:
             

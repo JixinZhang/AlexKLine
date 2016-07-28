@@ -15,6 +15,7 @@
 @interface QuoteView()
 @property (nonatomic, strong) AlexChartView *chartView;
 @property (nonatomic, strong) AlexChartView *fundChartView;
+@property (nonatomic, strong) AlexChartView *candleChartView;
 @end
 
 @implementation QuoteView
@@ -40,6 +41,8 @@
     [self requestChartData];
     [self addSubview:self.fundChartView];
     [self requestChartDataForWeex];
+    [self addSubview:self.candleChartView];
+    [self requestChartDataForKLine];
 }
 
 - (AlexChartView *)chartView {
@@ -112,6 +115,39 @@
     return _fundChartView;
 }
 
+- (AlexChartView *)candleChartView {
+    if (!_candleChartView) {
+        _candleChartView = [[AlexChartView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.fundChartView.frame), self.frame.size.width, 200)];
+        _candleChartView.backgroundColor = [UIColor whiteColor];
+        _candleChartView.borderColor = [UIColor blackColor];
+        _candleChartView.gridBackgroundColor = [UIColor clearColor];
+        _candleChartView.chartViewType = ChartViewTypeKLine;
+        
+        _candleChartView.borderLineWidth = 1.0f;
+        _candleChartView.data.sizeRatio = 0.8f;
+        _candleChartView.data.lineSet.drawPoint = YES;
+        _candleChartView.data.lineSet.pointColor = [UIColor redColor];
+        _candleChartView.data.lineSet.lineWidth = 1.0f;
+        _candleChartView.data.lineSet.lineColor = [UIColor magentaColor];
+        _candleChartView.data.lineSet.fillEnable = NO;
+        
+        _candleChartView.leftAxis.drawGridLinesEnabled = YES;
+        _candleChartView.leftAxis.drawLabelsEnabled = YES;
+        _candleChartView.leftAxis.labelPosition = YAxisLabelPositionOutsideChart;
+        _candleChartView.leftAxis.yPosition = AxisDependencyLeft;
+        _candleChartView.rightAxis.drawGridLinesEnabled = YES;
+        _candleChartView.rightAxis.drawLabelsEnabled = YES;
+        
+        _candleChartView.xAxis.drawGridLinesEnabled = YES;
+        _candleChartView.xAxis.drawLabelsEnabled = YES;
+        _candleChartView.xAxis.labelFont = [UIFont systemFontOfSize:7.0f];
+        
+        
+        [_candleChartView.viewHandler restrainViewPortOffsetLeft:30 offsetTop:5 offsetRight:10 offsetBottom:20];
+    }
+    return _candleChartView;
+}
+
 - (void)requestChartData {
     [self requestTrend:nil block:^(NSArray *result) {
         NSMutableArray *dataSets = [NSMutableArray array];
@@ -144,12 +180,39 @@
     }];
 }
 
+- (void)requestChartDataForKLine {
+    [self getAstockDataWithStockCode:nil Block:^(BOOL isSucceed, id response) {
+        if (isSucceed) {
+            NSMutableArray *dataSets = [NSMutableArray array];
+            for (KLineDataModel *model in response) {
+                AlexDataSet *entity = [[AlexDataSet alloc]init];
+                entity.open = model.open.floatValue;
+                entity.close = model.close.floatValue;
+                entity.high = model.high.floatValue;
+                entity.low = model.low.floatValue;
+                entity.volume = model.volume.floatValue;
+                entity.price = model.price.floatValue;
+                entity.date = model.date;
+                [dataSets addObject:entity];
+            }
+            [self refreshKLineChartData:dataSets];
+        }else {
+            NSLog(@"%@",response);
+        }
+
+    }];
+}
+
 - (void)refreshChartData:(NSMutableArray *)dataArr {
     [self.chartView setupWithData:dataArr];
 }
 
 - (void)refreshFundChartData:(NSMutableArray *)dataArr {
     [self.fundChartView setupWithData:dataArr];
+}
+
+- (void)refreshKLineChartData:(NSMutableArray *)dataArr {
+    [self.candleChartView setupWithData:dataArr];
 }
 
 - (void)requestTrend:(NSString *)string block:(void(^)(NSArray*result))block {
@@ -218,6 +281,7 @@
     }];
 }
 
+//基金数据
 -(void)getIncomeTrendChartDataWithProductCode:(NSString *)productCode
                                         Block:(void(^)(BOOL isSucceed,id response))block {
     NSString *urlString = @"https://api.ifastps.com.cn/fe-oauth/rest/product/get-performance-by-product-code-and-period?period=month_1&productCode=519097";
@@ -245,6 +309,61 @@
                 block(NO,response.errorMsg);
             }
         }
+    } fail:^(NSError *error) {
+        if (block) {
+            block(NO,error.localizedDescription);
+        }
+    }];
+}
+
+//K线数据
+- (void)getAstockDataWithStockCode:(NSString *)code
+                             Block:(void(^)(BOOL isSucceed,id response))block {
+    NSString *urlSting = @"http://101.69.181.106:8000/kline?prod_code=300264.SZ&candle_period=6&data_count=100";
+    LNRequest * request = [[LNRequest alloc] init];
+    request.url = urlSting;
+    request.httpHeaders = [NSDictionary dictionaryWithObjectsAndKeys:@"application/json",@"Accept", nil];
+    
+    [LNNetWorking getWithRequest:request success:^(LNResponse *response) {
+        if (response.resultDic) {
+            NSDictionary *dataDic = [response.resultDic valueForKey:@"data"];
+            NSDictionary* candleInfo = [dataDic valueForKey:@"candle"];
+            NSArray* fields = [candleInfo valueForKey:@"fields"];
+            NSDateFormatter* dateFormat = [[NSDateFormatter alloc] init];
+            dateFormat.dateFormat = @"yyyyMMdd";
+            NSInteger minTimeIndex = [fields indexOfObject:@"min_time"];
+            NSInteger openIndex = [fields indexOfObject:@"open_px"];
+            NSInteger highIndex = [fields indexOfObject:@"high_px"];
+            NSInteger lowIndex = [fields indexOfObject:@"low_px"];
+            NSInteger closeIndex = [fields indexOfObject:@"close_px"];
+            NSInteger businessAmountIndex = [fields indexOfObject:@"business_amount"];
+            NSInteger businessBalanceIndex = [fields indexOfObject:@"business_balance"];
+            NSArray* kLineItems = [candleInfo valueForKey:@"300264.SZ"];
+            NSMutableArray* dataModels = [NSMutableArray array];
+            for (NSArray* kLineItem in kLineItems){
+                KLineDataModel* data = [[KLineDataModel alloc] init];
+                data.open = kLineItem[openIndex];
+                data.close = kLineItem[closeIndex];
+                data.high = kLineItem[highIndex];
+                data.low = kLineItem[lowIndex];
+                NSNumber* businessBalance = kLineItem[businessBalanceIndex];
+                NSNumber* businessAmount = kLineItem[businessAmountIndex];
+                data.volume = [NSString stringWithFormat:@"%.2f",businessAmount.floatValue];
+                data.price = [NSString stringWithFormat:@"%.2f",([businessBalance floatValue] / [businessAmount floatValue])];
+                NSString* dateString = [NSString stringWithFormat:@"%@", kLineItem[minTimeIndex]];
+                data.date = [dateFormat dateFromString:dateString];
+                
+                [dataModels addObject:data];
+            }
+            if (block){
+                block(YES, dataModels);
+            }
+        }else {
+            if (block) {
+                block(NO,response.errorMsg);
+            }
+        }
+        
     } fail:^(NSError *error) {
         if (block) {
             block(NO,error.localizedDescription);

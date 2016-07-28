@@ -20,5 +20,6 @@
 @property (nonatomic, copy) NSString *averagePrice;  //平均价
 @property (nonatomic, copy) NSString *volume;    //成交量 = 返回数据中的business_amount
 @property (nonatomic, copy) NSString *preClose;   //昨收
+@property (nonatomic, strong) NSDate *date;             //日期
 
 @end

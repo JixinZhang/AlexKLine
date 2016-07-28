@@ -41,7 +41,7 @@
 //        [weakSelf.view addSubview:weakSelf.kLineView];
 //    }];
     
-    self.quoteView = [[QuoteView alloc] initWithFrame:CGRectMake(0, 20, kScreenWidth, 500)];
+    self.quoteView = [[QuoteView alloc] initWithFrame:CGRectMake(0, 20, kScreenWidth, kScreenheight)];
     [self.view addSubview:self.quoteView];
     
 //    self.roundedRect = [[RoundedRectView alloc] initWithFrame:CGRectMake(150, 450, 38, 25)];

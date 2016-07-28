@@ -72,7 +72,7 @@
         //蜡烛的左边 ＝ 前一个蜡烛的右侧坐标 + 图表的左侧 + 蜡烛的宽 * 空隙比例
         CGFloat left = (data.candleSet.candleWith * (i - data.lastStart) + self.viewHandler.contentLeft) + data.candleSet.candleWith * data.gapRatio;
         //高开低收竖线的X坐标
-        CGFloat startX = left - candleWidth / 2.0;
+        CGFloat startX = left + candleWidth / 2.0;
         
         CGRect candleRect = CGRectZero;
         if (open < close) {
