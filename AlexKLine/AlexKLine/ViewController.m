@@ -47,6 +47,8 @@
 //    self.roundedRect = [[RoundedRectView alloc] initWithFrame:CGRectMake(150, 450, 38, 25)];
 //    self.roundedRect.backgroundColor = [UIColor clearColor];
 //    [self.view addSubview:self.roundedRect];
+    
+    [self testRequst];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -122,4 +124,16 @@
   
 }
 
+- (void)testRequst {
+    NSString *urlStr = [NSString stringWithFormat:@"http://mdc.wallstreetcn.com/sort?data_count=10&sort_type=1&start_pos=0&data_count=200&fields=prod_name,last_px,trade_status,px_change,px_change_rate"];
+    LNRequest * request = [[LNRequest alloc] init];
+    request.url = urlStr;
+    [LNNetWorking getWithRequest:request success:^(LNResponse *response) {
+        NSDictionary *data = [response.resultDic valueForKey:@"data"];
+        NSDictionary *sort = [data valueForKey:@"sort"];
+        NSArray *fields = [sort valueForKey:@"fields"];
+    } fail:^(NSError *error) {
+        NSLog(@"request K line Data fail");
+    }];
+}
 @end
