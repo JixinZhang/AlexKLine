@@ -34,6 +34,7 @@
 		DA595D291D378E2C00300EEE /* AlexChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA595D281D378E2C00300EEE /* AlexChartView.m */; };
 		DA595D2E1D37913000300EEE /* AlexChartData.m in Sources */ = {isa = PBXBuildFile; fileRef = DA595D2D1D37913000300EEE /* AlexChartData.m */; };
 		DA595D311D37990700300EEE /* AlexChartHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = DA595D301D37990700300EEE /* AlexChartHandler.m */; };
+		DA653F0E1D4AFCAB00DAF0C5 /* AlexQuoteListCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DA653F0D1D4AFCAB00DAF0C5 /* AlexQuoteListCellModel.m */; };
 		DA8F89341D3DBF36005AFA8D /* CustomLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8F89331D3DBF36005AFA8D /* CustomLayer.m */; };
 		DA8F89371D3DCBB6005AFA8D /* RoundedRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8F89361D3DCBB6005AFA8D /* RoundedRectView.m */; };
 		DACD370B1D49D52900AE4549 /* AlexChartCandleSet.m in Sources */ = {isa = PBXBuildFile; fileRef = DACD370A1D49D52900AE4549 /* AlexChartCandleSet.m */; };
@@ -92,6 +93,8 @@
 		DA595D2D1D37913000300EEE /* AlexChartData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexChartData.m; sourceTree = "<group>"; };
 		DA595D2F1D37990700300EEE /* AlexChartHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlexChartHandler.h; sourceTree = "<group>"; };
 		DA595D301D37990700300EEE /* AlexChartHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexChartHandler.m; sourceTree = "<group>"; };
+		DA653F0C1D4AFCAB00DAF0C5 /* AlexQuoteListCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlexQuoteListCellModel.h; sourceTree = "<group>"; };
+		DA653F0D1D4AFCAB00DAF0C5 /* AlexQuoteListCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexQuoteListCellModel.m; sourceTree = "<group>"; };
 		DA8F89321D3DBF36005AFA8D /* CustomLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLayer.h; sourceTree = "<group>"; };
 		DA8F89331D3DBF36005AFA8D /* CustomLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLayer.m; sourceTree = "<group>"; };
 		DA8F89351D3DCBB6005AFA8D /* RoundedRectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundedRectView.h; sourceTree = "<group>"; };
@@ -116,6 +119,8 @@
 			children = (
 				784316E01CCF571E00D4CA15 /* KLineDataModel.h */,
 				784316E11CCF571E00D4CA15 /* KLineDataModel.m */,
+				DA653F0C1D4AFCAB00DAF0C5 /* AlexQuoteListCellModel.h */,
+				DA653F0D1D4AFCAB00DAF0C5 /* AlexQuoteListCellModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -349,6 +354,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA653F0E1D4AFCAB00DAF0C5 /* AlexQuoteListCellModel.m in Sources */,
 				DA3E208F1D3F63D400E4F831 /* AlexYAxisRender.m in Sources */,
 				DA595D2E1D37913000300EEE /* AlexChartData.m in Sources */,
 				DA595D291D378E2C00300EEE /* AlexChartView.m in Sources */,

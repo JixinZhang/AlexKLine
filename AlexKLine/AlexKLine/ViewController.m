@@ -13,6 +13,7 @@
 #import "KLineDataModel.h"
 #import "QuoteView.h"
 #import "RoundedRectView.h"
+#import "AlexQuoteListCellModel.h"
 
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kScreenheight [UIScreen mainScreen].bounds.size.height
@@ -132,6 +133,36 @@
         NSDictionary *data = [response.resultDic valueForKey:@"data"];
         NSDictionary *sort = [data valueForKey:@"sort"];
         NSArray *fields = [sort valueForKey:@"fields"];
+        NSUInteger prodNameIndex = [fields indexOfObject:@"prod_name"];
+        NSUInteger lastPxIndex = [fields indexOfObject:@"last_px"];
+        NSUInteger tradeStatusIndex = [fields indexOfObject:@"trade_status"];
+        NSUInteger pxChangeIndex = [fields indexOfObject:@"px_change"];
+        NSUInteger pxChangeRateIndex = [fields indexOfObject:@"px_change_rate"];
+        
+        NSArray *allKeys = [sort allKeys];
+        NSMutableArray *array = [NSMutableArray array];
+        
+        for (NSInteger i = 0; i< allKeys.count - 1; i++) {
+            NSString *key = allKeys[i];
+            if ([key isEqualToString:@"fields"]) {
+                continue;
+            }
+            AlexQuoteListCellModel *cellModel = [[AlexQuoteListCellModel alloc] init];
+            cellModel.prodCode = key;
+            cellModel.prodName = [(NSArray *)[sort valueForKey:key] objectAtIndex:prodNameIndex];
+            cellModel.lastPrice = [(NSArray *)[sort valueForKey:key] objectAtIndex:lastPxIndex];
+            cellModel.tradeStatus = [(NSArray *)[sort valueForKey:key] objectAtIndex:tradeStatusIndex];
+            cellModel.priceChange = [(NSArray *)[sort valueForKey:key] objectAtIndex:pxChangeIndex];
+            cellModel.priceChangeRate = [(NSArray *)[sort valueForKey:key] objectAtIndex:pxChangeRateIndex];
+            [array addObject:cellModel];
+            
+        }
+        NSLog(@"%@",array);
+        //ascending=YES,升序排列；ascending=NO，降序排列
+        NSSortDescriptor *priceChangeRateDesc = [NSSortDescriptor sortDescriptorWithKey:@"priceChangeRate" ascending:NO];
+        NSArray *descriptorArray = [NSArray arrayWithObjects:priceChangeRateDesc, nil];
+        NSArray *sortedArray = [array sortedArrayUsingDescriptors:descriptorArray];
+        NSLog(@"%@",sortedArray);
     } fail:^(NSError *error) {
         NSLog(@"request K line Data fail");
     }];
