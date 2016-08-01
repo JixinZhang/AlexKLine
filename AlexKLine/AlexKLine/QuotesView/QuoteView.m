@@ -79,14 +79,14 @@
         _chartView.xAxis.labelFont = [UIFont systemFontOfSize:7.0f];
         
         
-        [_chartView.viewHandler restrainViewPortOffsetLeft:30 offsetTop:5 offsetRight:10 offsetBottom:20];
+        [_chartView.viewHandler restrainViewPortOffsetLeft:30 offsetTop:5 offsetRight:35 offsetBottom:20];
     }
     return _chartView;
 }
 
 - (AlexChartView *)fundChartView {
     if (!_fundChartView) {
-        _fundChartView = [[AlexChartView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.chartView.frame), self.frame.size.width, 200)];
+        _fundChartView = [[AlexChartView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.chartView.frame), self.frame.size.width, 150)];
         _fundChartView.backgroundColor = [UIColor whiteColor];
         _fundChartView.borderColor = [UIColor blackColor];
         _fundChartView.gridBackgroundColor = [UIColor clearColor];
@@ -110,14 +110,14 @@
         _fundChartView.xAxis.labelFont = [UIFont systemFontOfSize:7.0f];
         
         
-        [_fundChartView.viewHandler restrainViewPortOffsetLeft:30 offsetTop:5 offsetRight:10 offsetBottom:20];
+        [_fundChartView.viewHandler restrainViewPortOffsetLeft:30 offsetTop:5 offsetRight:35 offsetBottom:20];
     }
     return _fundChartView;
 }
 
 - (AlexChartView *)candleChartView {
     if (!_candleChartView) {
-        _candleChartView = [[AlexChartView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.fundChartView.frame), self.frame.size.width, 200)];
+        _candleChartView = [[AlexChartView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.fundChartView.frame), self.frame.size.width, 150)];
         _candleChartView.backgroundColor = [UIColor whiteColor];
         _candleChartView.borderColor = [UIColor blackColor];
         _candleChartView.gridBackgroundColor = [UIColor clearColor];
@@ -143,7 +143,7 @@
         _candleChartView.xAxis.labelFont = [UIFont systemFontOfSize:7.0f];
         
         
-        [_candleChartView.viewHandler restrainViewPortOffsetLeft:30 offsetTop:5 offsetRight:10 offsetBottom:20];
+        [_candleChartView.viewHandler restrainViewPortOffsetLeft:30 offsetTop:5 offsetRight:35 offsetBottom:20];
     }
     return _candleChartView;
 }
@@ -193,6 +193,9 @@
                 entity.volume = model.volume.floatValue;
                 entity.price = model.price.floatValue;
                 entity.date = model.date;
+                entity.MA1 = -1.0f;
+                entity.MA2 = -1.0f;
+                entity.MA3 = -1.0f;
                 [dataSets addObject:entity];
             }
             [self refreshKLineChartData:dataSets];
@@ -352,7 +355,6 @@
                 data.price = [NSString stringWithFormat:@"%.2f",([businessBalance floatValue] / [businessAmount floatValue])];
                 NSString* dateString = [NSString stringWithFormat:@"%@", kLineItem[minTimeIndex]];
                 data.date = [dateFormat dateFromString:dateString];
-                
                 [dataModels addObject:data];
             }
             if (block){

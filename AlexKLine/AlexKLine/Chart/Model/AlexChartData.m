@@ -68,7 +68,7 @@
 - (void)computeLastStartAndLastEnd {
     _lastEnd = _dataSets.count;
     if (_dataSets.count >= _valCount) {
-//        _lastEnd = _dataSets.count - _valCount;
+        _lastStart = _dataSets.count - _valCount;
     }else {
         _lastStart = 0;
     }

@@ -26,7 +26,7 @@
     }
     NSMutableArray *values = [NSMutableArray array];
     for (NSInteger i = 0; i < _labelCount; i++) {
-        AlexDataSet *dataSet = [[AlexDataSet alloc] init];
+        AlexDataSet *dataSet;
         if (i == 0) {
             dataSet = data.dataSets.firstObject;
         }else if (i == data.dataSets.count - 1) {
@@ -63,4 +63,35 @@
     }
     _values = xValues;
 }
+
+- (void)setupKLineValues:(AlexChartData *)data {
+    if (_labelCount > data.dataSets.count) {
+        _labelCount = data.dataSets.count;
+    }
+    NSMutableArray *values = [NSMutableArray array];
+    for (NSInteger i = 0; i < _labelCount; i++) {
+        AlexDataSet *dataSet;
+        if (i == 0) {
+            dataSet = data.dataSets.firstObject;
+        }else if (i == data.dataSets.count - 1) {
+            dataSet = data.dataSets.lastObject;
+        }else {
+            NSInteger index = floorf((data.dataSets.count - 1) / (_labelCount -1) * i / 1.0);
+            dataSet = data.dataSets[index];
+        }
+        
+        if (dataSet.date) {
+            NSDateFormatter* dateFormat = [[NSDateFormatter alloc] init];
+            dateFormat.dateFormat = @"yyyy-MM-dd";
+            NSString *dataString = [dateFormat stringFromDate:dataSet.date];
+            [values addObject:dataString];
+        }else {
+            if (data.lastStart) {
+                [values addObject:dataSet.startTime];
+            }
+        }
+    }
+    _values = values;
+}
+
 @end

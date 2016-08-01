@@ -71,11 +71,20 @@
     _values = valuesArr;
 }
 
-//- (void)setupKLineValues:(AlexChartData *)data {
-//    if (data.yAxisMax > data.dataSets.count) {
-//        return;
-//    }
-//}
+- (void)setupKLineValues:(AlexChartData *)data {
+    if (data.yAxisMax > data.dataSets.count) {
+        return;
+    }
+    CGFloat max = ((AlexDataSet *)data.dataSets[data.yAxisMax]).high;
+    CGFloat min = ((AlexDataSet *)data.dataSets[data.yAxisMin]).low;
+    
+    CGFloat avg = (max + min)/2;
+    CGFloat price = max - min;
+    price = price/data.sizeRatio/2;
+    self.axisMaximun = avg + price;
+    self.axisMinimun = avg - price;
+    [self setupValues];
+}
 
 //- (void)setupVolumeValues:(AlexChartData *)data {
 //    NSString *maxString = [NSString stringWithFormat:@"%@",data.yMax];

@@ -15,6 +15,7 @@
     self.backgroundColor = self.gridBackgroundColor;
     _leftAxis = [[AlexYAxis alloc] init];
     _rightAxis = [[AlexYAxis alloc] init];
+    _rightAxis.yPosition = AxisDependencyRight;
     _dataRender = [AlexDataRender initWithHandler:self.viewHandler];
     
     _xAxisRender = [AlexXAxisRender initWithHandler:self.viewHandler xAxis:self.xAxis];
@@ -52,6 +53,7 @@
             
             break;
         case ChartViewTypeKLine:
+            _rightAxis.drawLabelsEnabled = NO;
             valCount = self.viewHandler.contentWidth / self.data.candleSet.candleWith;
             break;
         case ChartViewTypeKColumnar:
@@ -127,6 +129,8 @@
             break;
         case ChartViewTypeKLine:
             [self.data computeKLineMinMax];
+            [self.xAxis setupKLineValues:self.data];
+            [self.leftAxis setupKLineValues:self.data];
             break;
         case ChartViewTypeColumnar:
         case ChartViewTypeKColumnar:
