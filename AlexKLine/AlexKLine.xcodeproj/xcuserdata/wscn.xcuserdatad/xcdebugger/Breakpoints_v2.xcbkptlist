@@ -19,13 +19,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AlexKLine/QuotesView/QuoteView.m"
-            timestampString = "491994221.793112"
+            filePath = "AlexKLine/Chart/ChartRender/AlexDataRender.m"
+            timestampString = "491997265.737587"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "249"
-            endingLineNumber = "249"
-            landmarkName = "-refreshKLineChartData:"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "-DrawVolume:data:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AlexKLine/Chart/ChartRender/AlexDataRender.m"
+            timestampString = "491997274.238806"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "-DrawCandle:data:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -161,12 +161,9 @@
         _volumeChartView.data.sizeRatio = 1.0f;
         _volumeChartView.chartViewType = ChartViewTypeColumnar;
         
-        _volumeChartView.leftAxis.drawGridLinesEnabled = YES;
         _volumeChartView.leftAxis.drawLabelsEnabled = YES;
         _volumeChartView.leftAxis.labelPosition = YAxisLabelPositionInsideChart;
         _volumeChartView.leftAxis.yPosition = AxisDependencyLeft;
-        _volumeChartView.rightAxis.drawGridLinesEnabled = YES;
-        _volumeChartView.rightAxis.drawLabelsEnabled = YES;
         
         _volumeChartView.xAxis.drawGridLinesEnabled = YES;
         _volumeChartView.xAxis.drawLabelsEnabled = YES;

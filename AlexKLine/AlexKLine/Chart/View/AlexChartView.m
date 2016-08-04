@@ -43,7 +43,7 @@
             self.xAxis.labelSite = XAxisLabelSiteRight;
             break;
         case ChartViewTypeColumnar:
-            valCount = 241;
+//            valCount = 241;
             _rightAxis.drawLabelsEnabled = NO;
             _leftAxis.drawGridLinesEnabled = NO;
 //            self.data.highlighter.volumeChartType = YES;
