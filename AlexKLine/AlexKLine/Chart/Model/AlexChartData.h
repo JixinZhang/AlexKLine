@@ -41,6 +41,10 @@
 - (void)computeMinMax;
 - (void)computeLineMinMax;
 - (void)computeKLineMinMax;
+/**
+ *  计算成交量的最大、最小值
+ */
+- (void)computeVolumeMinMax;
 - (void)computeLastStartAndLastEnd;
 
 - (BOOL)hasEmptyNum;

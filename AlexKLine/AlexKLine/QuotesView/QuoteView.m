@@ -16,6 +16,7 @@
 @property (nonatomic, strong) AlexChartView *chartView;
 @property (nonatomic, strong) AlexChartView *fundChartView;
 @property (nonatomic, strong) AlexChartView *candleChartView;
+@property (nonatomic, strong) AlexChartView *volumeChartView;
 @end
 
 @implementation QuoteView
@@ -43,6 +44,8 @@
     [self requestChartDataForWeex];
     [self addSubview:self.candleChartView];
     [self requestChartDataForKLine];
+    
+    [self addSubview:self.volumeChartView];
 }
 
 - (AlexChartView *)chartView {
@@ -148,6 +151,33 @@
     return _candleChartView;
 }
 
+- (AlexChartView *)volumeChartView {
+    if (!_volumeChartView) {
+        _volumeChartView = [[AlexChartView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.candleChartView.frame), self.frame.size.width, 150)];
+        _volumeChartView.backgroundColor = [UIColor whiteColor];
+        _volumeChartView.borderColor = [UIColor blackColor];
+        _volumeChartView.gridBackgroundColor = [UIColor clearColor];
+        _volumeChartView.borderLineWidth = 1.0f;
+        _volumeChartView.data.sizeRatio = 1.0f;
+        _volumeChartView.chartViewType = ChartViewTypeColumnar;
+        
+        _volumeChartView.leftAxis.drawGridLinesEnabled = YES;
+        _volumeChartView.leftAxis.drawLabelsEnabled = YES;
+        _volumeChartView.leftAxis.labelPosition = YAxisLabelPositionInsideChart;
+        _volumeChartView.leftAxis.yPosition = AxisDependencyLeft;
+        _volumeChartView.rightAxis.drawGridLinesEnabled = YES;
+        _volumeChartView.rightAxis.drawLabelsEnabled = YES;
+        
+        _volumeChartView.xAxis.drawGridLinesEnabled = YES;
+        _volumeChartView.xAxis.drawLabelsEnabled = YES;
+        _volumeChartView.xAxis.labelFont = [UIFont systemFontOfSize:7.0f];
+        
+        
+        [_volumeChartView.viewHandler restrainViewPortOffsetLeft:30 offsetTop:5 offsetRight:35 offsetBottom:20];
+    }
+    return _volumeChartView;
+}
+
 - (void)requestChartData {
     [self requestTrend:nil block:^(NSArray *result) {
         NSMutableArray *dataSets = [NSMutableArray array];
@@ -216,6 +246,7 @@
 
 - (void)refreshKLineChartData:(NSMutableArray *)dataArr {
     [self.candleChartView setupWithData:dataArr];
+    [self.volumeChartView setupWithData:dataArr];
 }
 
 - (void)requestTrend:(NSString *)string block:(void(^)(NSArray*result))block {

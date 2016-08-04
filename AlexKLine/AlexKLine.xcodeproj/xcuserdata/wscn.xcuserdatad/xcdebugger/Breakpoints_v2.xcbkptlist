@@ -19,62 +19,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AlexKLine/Chart/Model/AlexChartData.m"
-            timestampString = "491724767.185823"
+            filePath = "AlexKLine/QuotesView/QuoteView.m"
+            timestampString = "491994221.793112"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "237"
-            endingLineNumber = "237"
-            landmarkName = "-computeKLineMinMax"
+            startingLineNumber = "249"
+            endingLineNumber = "249"
+            landmarkName = "-refreshKLineChartData:"
             landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AlexKLine/ViewController.m"
-            timestampString = "491729387.658966"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
-            landmarkName = "-testRequst"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__28-[ViewController testRequst]_block_invoke"
-                  moduleName = "AlexKLine"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wscn/Documents/Alex/AlexKLine/AlexKLine/AlexKLine/ViewController.m"
-                  timestampString = "491737089.864041"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "169"
-                  endingLineNumber = "169"
-                  offsetFromSymbolStart = "2287">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__28-[ViewController testRequst]_block_invoke_2"
-                  moduleName = "AlexKLine"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wscn/Documents/Alex/AlexKLine/AlexKLine/AlexKLine/ViewController.m"
-                  timestampString = "491737089.864229"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "170"
-                  endingLineNumber = "170"
-                  offsetFromSymbolStart = "51">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

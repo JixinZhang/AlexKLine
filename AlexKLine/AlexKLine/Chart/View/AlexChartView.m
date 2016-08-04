@@ -46,7 +46,7 @@
             valCount = 241;
             _rightAxis.drawLabelsEnabled = NO;
             _leftAxis.drawGridLinesEnabled = NO;
-//            self.data.hightlighter.volumeChartType = YES;
+//            self.data.highlighter.volumeChartType = YES;
             _leftAxis.drawLabelsEnabled = _leftAxis.labelPosition == YAxisLabelPositionOutsideChart;
             break;
         case ChartViewTypeFiveDayColumnar:
@@ -135,7 +135,9 @@
         case ChartViewTypeColumnar:
         case ChartViewTypeKColumnar:
         case ChartViewTypeFiveDayColumnar:
-            
+            [self.data computeVolumeMinMax];
+            [self.xAxis setupVolumeValues:self.data];
+            [self.leftAxis setupVolumeValues:self.data];
             break;
         default:
             break;
@@ -157,7 +159,7 @@
             break;
         case ChartViewTypeColumnar:
         case ChartViewTypeFiveDayColumnar:
-            
+            [_dataRender DrawVolume:context data:self.data];
             break;
         case ChartViewTypeKColumnar:
             break;

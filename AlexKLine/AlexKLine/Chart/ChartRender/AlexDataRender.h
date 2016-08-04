@@ -16,4 +16,7 @@
 
 #pragma mark - 绘制蜡烛图
 - (void)DrawCandle:(CGContextRef)context data:(AlexChartData *)data;
+
+#pragma mark - 绘制成交量
+- (void)DrawVolume:(CGContextRef)context data:(AlexChartData *)data;
 @end

@@ -99,4 +99,32 @@
     CGContextRestoreGState(context);
 }
 
+#pragma mark - 绘制成交量
+- (void)DrawVolume:(CGContextRef)context data:(AlexChartData *)data {
+    if (!data.dataSets) {
+        return;
+    }
+    CGContextSaveGState(context);
+    data.drawScale = self.viewHandler.contentHeight *data.sizeRatio / data.yMax;
+    CGFloat emptyHeight = (self.viewHandler.contentHeight * (1 - data.sizeRatio)) / 2.0;
+    CGFloat volumeWidth = self.viewHandler.contentWidth / data.valCount;
+    CGFloat candleWidth = volumeWidth - volumeWidth * data.gapRatio;
+    UIColor *color;
+    for (NSInteger i = data.lastStart; i < data.lastEnd; i++) {
+        AlexDataSet *dataSet = data.dataSets[i];
+        if (i > 0) {
+            AlexDataSet *lastDataSet = data.dataSets[i - 1];
+            if (dataSet.price > lastDataSet.price) {
+                color = data.candleSet.candleRiseColor;
+            }else {
+                color = data.candleSet.candleFallColor;
+            }
+        }
+        CGFloat endX = (self.viewHandler.contentLeft + volumeWidth * i) + volumeWidth * data.gapRatio;
+        CGFloat volume = (dataSet.volume - 0) * data.drawScale;
+        [AlexChartUtils drawRect:context color:color rect:CGRectMake(endX, self.viewHandler.contentBottom - volume - emptyHeight, candleWidth, volume)];
+    }
+    CGContextRestoreGState(context);
+}
+
 @end

@@ -94,4 +94,8 @@
     _values = values;
 }
 
+- (void)setupVolumeValues:(AlexChartData *)data {
+    NSMutableArray *xVals = [@[@"",@"",@"",@"",@""] mutableCopy];
+    _values = xVals;
+}
 @end

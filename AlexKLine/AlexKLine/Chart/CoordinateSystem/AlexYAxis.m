@@ -86,9 +86,9 @@
     [self setupValues];
 }
 
-//- (void)setupVolumeValues:(AlexChartData *)data {
-//    NSString *maxString = [NSString stringWithFormat:@"%@",data.yMax];
-//    NSString *statusString =
-//}
+- (void)setupVolumeValues:(AlexChartData *)data {
+    NSString *maxString = [NSString stringWithFormat:@"%f",data.yMax];
+    _values = @[maxString];
+}
 
 @end

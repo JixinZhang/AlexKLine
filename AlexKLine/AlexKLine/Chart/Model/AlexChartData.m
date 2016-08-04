@@ -239,4 +239,16 @@
 //    [self computeKlinePointsCoord];
 }
 
+- (void)computeVolumeMinMax {
+    _yMax = CGFLOAT_MIN;
+    _yMin = 0;
+    if (_lastEnd > _dataSets.count) {
+        return;
+    }
+    for (NSInteger i = _lastStart; i < _lastEnd; i++) {
+        AlexDataSet *entity = _dataSets[i];
+        _yMax = _yMax > entity.volume ? _yMax : entity.volume;
+    }
+}
+
 @end

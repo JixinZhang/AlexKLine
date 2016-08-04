@@ -34,5 +34,5 @@ typedef NS_ENUM(NSUInteger, XAxisLabelSite) {
 - (void)setupValues:(AlexChartData *)data;
 - (void)setupLineValues:(AlexChartData *)data;
 - (void)setupKLineValues:(AlexChartData *)data;
-
+- (void)setupVolumeValues:(AlexChartData *)data;
 @end

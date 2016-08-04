@@ -21,7 +21,7 @@ typedef NS_ENUM(NSUInteger, AxisDependency) {
 @interface AlexYAxis : AlexAxisBase
 
 @property (nonatomic, assign) NSInteger labelCount;
-@property (nonatomic, strong) NSMutableArray *values;
+@property (nonatomic, strong) NSArray *values;
 @property (nonatomic, assign) AxisDependency yPosition;
 @property (nonatomic, assign) YAxisLabelPosition labelPosition;
 
