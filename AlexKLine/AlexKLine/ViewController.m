@@ -126,7 +126,7 @@
 }
 
 - (void)testRequst {
-    NSString *urlStr = [NSString stringWithFormat:@"http://mdc.wallstreetcn.com/sort?data_count=10&sort_type=1&start_pos=0&data_count=200&fields=prod_name,last_px,trade_status,px_change,px_change_rate"];
+    NSString *urlStr = [NSString stringWithFormat:@"http://mdc.wallstreetcn.com/sort?data_count=10&sort_type=1&start_pos=0&fields=prod_name,last_px,trade_status,px_change,px_change_rate"];
     LNRequest * request = [[LNRequest alloc] init];
     request.url = urlStr;
     [LNNetWorking getWithRequest:request success:^(LNResponse *response) {
@@ -142,7 +142,7 @@
         NSArray *allKeys = [sort allKeys];
         NSMutableArray *array = [NSMutableArray array];
         
-        for (NSInteger i = 0; i< allKeys.count - 1; i++) {
+        for (NSInteger i = 0; i< allKeys.count; i++) {
             NSString *key = allKeys[i];
             if ([key isEqualToString:@"fields"]) {
                 continue;
@@ -162,7 +162,10 @@
         NSSortDescriptor *priceChangeRateDesc = [NSSortDescriptor sortDescriptorWithKey:@"priceChangeRate" ascending:NO];
         NSArray *descriptorArray = [NSArray arrayWithObjects:priceChangeRateDesc, nil];
         NSArray *sortedArray = [array sortedArrayUsingDescriptors:descriptorArray];
-        NSLog(@"%@",sortedArray);
+        for (NSInteger i = 0; i < sortedArray.count; i++) {
+            AlexQuoteListCellModel *cellModel = (AlexQuoteListCellModel*)sortedArray[i];
+            NSLog(@"%@,涨跌额＝%@",cellModel.prodName,cellModel.priceChangeRate);
+        }
     } fail:^(NSError *error) {
         NSLog(@"request K line Data fail");
     }];
