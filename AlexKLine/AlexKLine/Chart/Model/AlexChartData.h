@@ -14,6 +14,7 @@
 #import "AlexChartHandler.h"
 #import "AlexChartLineSet.h"
 #import "AlexChartCandleSet.h"
+#import "AlexChartHighlight.h"
 
 @interface AlexChartData : NSObject
 
@@ -29,6 +30,8 @@
 
 @property (nonatomic, strong) AlexChartLineSet *lineSet;    //线的属性
 @property (nonatomic, strong) AlexChartCandleSet *candleSet;//蜡烛图的属性
+@property (nonatomic, strong) AlexChartHighlight *highlighter;  //高亮十字线属性
+
 @property (nonatomic, assign) NSInteger lastEnd;            //结束下标
 @property (nonatomic, assign) NSInteger lastStart;          //开始下标
 @property (nonatomic, assign) NSInteger yAxisMax;           //当前屏幕最大值的下标

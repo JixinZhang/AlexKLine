@@ -25,6 +25,7 @@
 		DA0B0C531D3CCF1D005B0B1F /* QuoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0B0C521D3CCF1D005B0B1F /* QuoteView.m */; };
 		DA1022B41D36455500E0CBEC /* AlexAxisBase.m in Sources */ = {isa = PBXBuildFile; fileRef = DA1022B31D36455500E0CBEC /* AlexAxisBase.m */; };
 		DA1022BA1D3648B600E0CBEC /* AlexXAxis.m in Sources */ = {isa = PBXBuildFile; fileRef = DA1022B91D3648B600E0CBEC /* AlexXAxis.m */; };
+		DA1B2A321D59A86100D4082A /* AlexChartHighlight.m in Sources */ = {isa = PBXBuildFile; fileRef = DA1B2A311D59A86100D4082A /* AlexChartHighlight.m */; };
 		DA29694F1D38EF440047E44A /* AlexDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = DA29694E1D38EF440047E44A /* AlexDataSet.m */; };
 		DA2969521D38F2F20047E44A /* AlexChartLineSet.m in Sources */ = {isa = PBXBuildFile; fileRef = DA2969511D38F2F20047E44A /* AlexChartLineSet.m */; };
 		DA3E208C1D3F567B00E4F831 /* AlexXAxisRender.m in Sources */ = {isa = PBXBuildFile; fileRef = DA3E208B1D3F567B00E4F831 /* AlexXAxisRender.m */; };
@@ -75,6 +76,8 @@
 		DA1022B31D36455500E0CBEC /* AlexAxisBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexAxisBase.m; sourceTree = "<group>"; };
 		DA1022B81D3648B600E0CBEC /* AlexXAxis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlexXAxis.h; sourceTree = "<group>"; };
 		DA1022B91D3648B600E0CBEC /* AlexXAxis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexXAxis.m; sourceTree = "<group>"; };
+		DA1B2A301D59A86100D4082A /* AlexChartHighlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlexChartHighlight.h; sourceTree = "<group>"; };
+		DA1B2A311D59A86100D4082A /* AlexChartHighlight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexChartHighlight.m; sourceTree = "<group>"; };
 		DA29694D1D38EF440047E44A /* AlexDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlexDataSet.h; sourceTree = "<group>"; };
 		DA29694E1D38EF440047E44A /* AlexDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlexDataSet.m; sourceTree = "<group>"; };
 		DA2969501D38F2F20047E44A /* AlexChartLineSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlexChartLineSet.h; sourceTree = "<group>"; };
@@ -217,6 +220,8 @@
 				DA05FD7A1D348A4000D5EB15 /* AlexChartUtils.m */,
 				DA595D2F1D37990700300EEE /* AlexChartHandler.h */,
 				DA595D301D37990700300EEE /* AlexChartHandler.m */,
+				DA1B2A301D59A86100D4082A /* AlexChartHighlight.h */,
+				DA1B2A311D59A86100D4082A /* AlexChartHighlight.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -375,6 +380,7 @@
 				789F20201CC0D209000C3060 /* AKLineView.m in Sources */,
 				DA29694F1D38EF440047E44A /* AlexDataSet.m in Sources */,
 				DA0B0C4F1D3CC8F6005B0B1F /* AlexDataRender.m in Sources */,
+				DA1B2A321D59A86100D4082A /* AlexChartHighlight.m in Sources */,
 				DA0B0C531D3CCF1D005B0B1F /* QuoteView.m in Sources */,
 				DA0B0C4C1D3CC848005B0B1F /* AlexRenderBase.m in Sources */,
 				DA3E208C1D3F567B00E4F831 /* AlexXAxisRender.m in Sources */,

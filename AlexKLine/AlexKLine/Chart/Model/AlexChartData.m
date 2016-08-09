@@ -31,6 +31,13 @@
     return self;
 }
 
+- (AlexChartHighlight *)highlighter {
+    if (!_highlighter) {
+        _highlighter = [[AlexChartHighlight alloc] init];
+    }
+    return _highlighter;
+}
+
 - (void)setLastStart:(NSInteger)lastStart {
     _lastStart = lastStart;
     if (_lastStart < 0) {
@@ -167,13 +174,17 @@
         CGPoint StartPoint = CGPointMake(startX, startY);
         [_lineSet.points addObject:[NSValue valueWithCGPoint:StartPoint]];
         
-        //
+        //均线
         if ((_lineSet.isDrawAvgLine)) {
             CGFloat avgStartY = (_yMax - dataSet.averagePrice) * _drawScale + _viewHandler.contentTop + emptyHeight;
             CGPoint avgPoint = CGPointMake(startX, avgStartY);
             [_lineSet.avgPoints addObject:[NSValue valueWithCGPoint:avgPoint]];
         }
         
+        //高亮十字线
+        if (i == _highlighter.index) {
+            _highlighter.point = CGPointMake(startX, startY);
+        }
         //添加填充色路径
         if (_lineSet.isFillEnabled) {
             CGPoint fillPoint = CGPointMake(0, 0);

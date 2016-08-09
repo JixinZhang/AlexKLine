@@ -8,6 +8,12 @@
 
 #import "AlexChartView.h"
 
+@interface AlexChartView()
+
+@property (nonatomic, strong) CALayer *highlightLayer;
+
+@end
+
 @implementation AlexChartView
 
 - (void)setupChart {
@@ -21,6 +27,11 @@
     _xAxisRender = [AlexXAxisRender initWithHandler:self.viewHandler xAxis:self.xAxis];
     _leftRender = [AlexYAxisRender initWithHandler:self.viewHandler yAxis:_leftAxis];
     _rightRender = [AlexYAxisRender initWithHandler:self.viewHandler yAxis:_rightAxis];
+    
+    _longPressEnabled = YES;
+    _longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGestureRecognized:)];
+    _longPressGestureRecognizer.minimumPressDuration = 0.5;
+    [self addGestureRecognizer:_longPressGestureRecognizer];
 }
 
 - (void)setupWithData:(NSMutableArray *)data {
@@ -69,6 +80,15 @@
     [self setNeedsDisplay];
 }
 
+- (CALayer *)highlightLayer {
+    if (!_highlightLayer) {
+        _highlightLayer = [CALayer layer];
+        _highlightLayer.frame = self.bounds;
+        _highlightLayer.backgroundColor = [UIColor clearColor].CGColor;
+    }
+    return _highlightLayer;
+}
+
 #pragma mark -  绘制
 
 - (void)drawRect:(CGRect)rect {
@@ -99,6 +119,26 @@
     [_leftRender renderYAxisLabels:context];
     [_rightRender renderYAxisLabels:context];
     [_xAxisRender renderAxisLabels:context];
+    
+    //绘制高亮十字线
+    switch (self.chartViewType) {
+        case ChartViewTypeNormal:
+        case ChartViewTypeLine:
+        case ChartViewTypeFiveDayLine:{
+            [_dataRender drawCrossLine:context data:self.data];
+        }
+            break;
+        case ChartViewTypeKLine:
+        case ChartViewTypeColumnar:
+        case ChartViewTypeKColumnar:
+        case ChartViewTypeFiveDayColumnar:{
+            [_dataRender drawKCrossLine:context data:self.data];
+        }
+            break;
+        default:
+            break;
+    }
+    
 }
 
 - (void)drawGridBackground:(CGContextRef)context {
@@ -168,6 +208,67 @@
             break;
     }
 
+}
+
+#pragma mark - 长按手势
+
+- (void)longPressGestureRecognized:(UILongPressGestureRecognizer *)longPress {
+    if (!self.longPressEnabled ||
+        self.data.dataSets.count == 0) {
+        return;
+    }
+    CGPoint point = [longPress locationInView:self];
+    switch (longPress.state) {
+        case UIGestureRecognizerStateBegan:
+            self.data.highlighter.highlight = YES;
+            [self computeHighlightPoint:point];
+            [self.layer addSublayer:self.highlightLayer];
+            break;
+        case UIGestureRecognizerStateChanged:
+            [self computeHighlightPoint:point];
+            break;
+        case UIGestureRecognizerStateEnded:
+        case UIGestureRecognizerStateCancelled:
+            self.data.highlighter.highlight = NO;
+            self.data.highlighter.touchPoint = point;
+            [self.highlightLayer removeFromSuperlayer];
+            break;
+        default:
+            break;
+    }
+    if (self.highlightBlock) {
+        self.highlightBlock(self.data.highlighter, longPress);
+    }
+    [self setNeedsDisplay];
+}
+
+- (void)computeHighlightPoint:(CGPoint)point {
+    if (point.x < self.viewHandler.contentLeft ||
+        point.x > self.viewHandler.contentRight) {
+        return;
+    }
+    switch (self.chartViewType) {
+        case ChartViewTypeNormal:
+        case ChartViewTypeLine:
+        case ChartViewTypeFiveDayLine:
+        case ChartViewTypeColumnar:
+        case ChartViewTypeFiveDayColumnar:{
+            CGFloat volumeWidth = self.viewHandler.contentWidth / self.data.valCount;
+            self.data.highlighter.index = (NSInteger)((point.x - self.viewHandler.contentLeft) / volumeWidth);
+        }
+            break;
+        case ChartViewTypeKLine:
+        case ChartViewTypeKColumnar:{
+            self.data.highlighter.index = (NSInteger)((point.x - self.viewHandler.contentLeft) / self.data.candleSet.candleWith);
+        }
+        default:
+            break;
+    }
+    self.data.highlighter.touchPoint = point;
+    self.data.highlighter.index += self.data.lastStart;
+    if (self.data.highlighter.index > self.data.dataSets.count - 1) {
+        self.data.highlighter.index = self.data.dataSets.count -1;
+    }
 }
 
 @end

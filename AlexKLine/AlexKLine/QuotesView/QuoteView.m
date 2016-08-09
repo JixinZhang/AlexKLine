@@ -101,6 +101,10 @@
         _fundChartView.data.lineSet.lineColor = [UIColor magentaColor];
         _fundChartView.data.lineSet.fillEnable = NO;
         
+        //设置十字线
+        _fundChartView.data.highlighter.levelLineColor = [UIColor blackColor];
+        _fundChartView.data.highlighter.verticalLineColor = [UIColor blackColor];
+        
         _fundChartView.leftAxis.drawGridLinesEnabled = YES;
         _fundChartView.leftAxis.drawLabelsEnabled = YES;
         _chartView.leftAxis.labelPosition = YAxisLabelPositionOutsideChart;
@@ -159,6 +163,7 @@
         _volumeChartView.gridBackgroundColor = [UIColor clearColor];
         _volumeChartView.borderLineWidth = 1.0f;
         _volumeChartView.data.sizeRatio = 1.0f;
+        _volumeChartView.data.highlighter.volumeChartType = YES;
         _volumeChartView.chartViewType = ChartViewTypeColumnar;
         
         _volumeChartView.leftAxis.drawLabelsEnabled = YES;

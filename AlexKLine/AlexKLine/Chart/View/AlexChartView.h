@@ -30,7 +30,7 @@ typedef NS_ENUM(NSUInteger, DirectionType) {
 
 typedef void (^AlexChartViewPinchRecognizerBlock)(AlexChartData *data);
 typedef void (^AlexChartViewPanRecognizerBlock)(BOOL isEnded, AlexChartData *data);
-
+typedef void (^AlexChartViewHighlightBlock)(AlexChartHighlight *highlight, UILongPressGestureRecognizer *longPress);
 @interface AlexChartView : AlexChartBase
 
 @property (nonatomic, strong) AlexYAxis *leftAxis;          //左边Y轴
@@ -49,6 +49,8 @@ typedef void (^AlexChartViewPanRecognizerBlock)(BOOL isEnded, AlexChartData *dat
 @property (nonatomic, strong) UIPanGestureRecognizer *panGestureRecognizer;
 @property (nonatomic, strong) UIPinchGestureRecognizer *pinchGestureRecognizer;
 @property (nonatomic, strong) UILongPressGestureRecognizer *longPressGestureRecognizer;
+
+@property (nonatomic, copy) AlexChartViewHighlightBlock highlightBlock;
 
 - (void)calcMinMax;
 - (void)setupWithData:(NSMutableArray *)data;

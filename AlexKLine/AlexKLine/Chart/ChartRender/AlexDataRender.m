@@ -94,7 +94,15 @@
         
         [AlexChartUtils drawRect:context lineColor:color fillColor:color lineWidht:0 rect:candleRect];
         [AlexChartUtils drawLine:context color:color width:1 startPoint:CGPointMake(startX, high) endPoint:CGPointMake(startX, low)];
+    
+        //计算十字线的数据
+        if (data.highlighter.isHighlight) {
+            if (i == data.highlighter.index) {
+                data.highlighter.point = CGPointMake(startX, candleRect.origin.y);
+            }
+        }
     }
+    
     
     CGContextRestoreGState(context);
 }
@@ -125,6 +133,222 @@
         [AlexChartUtils drawRect:context color:color rect:CGRectMake(endX, self.viewHandler.contentBottom - volume - emptyHeight, candleWidth, volume)];
     }
     CGContextRestoreGState(context);
+}
+
+#pragma mark - 绘制十字线
+/**
+ *  绘制一般曲线的十字线
+ *
+ *  @param context 绘制上下文
+ *  @param data    数据
+ */
+- (void)drawCrossLine:(CGContextRef)context data:(AlexChartData *)data {
+    
+    if (!data.highlighter.isHighlight ||
+        !data.dataSets) {
+        return;
+    }
+    
+    if (data.highlighter.isDrawLevelLine) {
+        if (data.highlighter.touchPoint.y > self.viewHandler.contentTop &&
+            data.highlighter.touchPoint.y < self.viewHandler.contentBottom) {
+            
+            CGFloat price = data.yMax - (data.highlighter.touchPoint.y - self.viewHandler.contentTop) / data.drawScale;
+            CGFloat priceRatio = 0;
+            CGFloat ratio = data.highlighter.maxPriceRatio / (self.viewHandler.contentHeight/2);
+            priceRatio = data.highlighter.maxPriceRatio - (data.highlighter.touchPoint.y - self.viewHandler.contentTop) * ratio;
+            NSString *priceText = [NSString stringWithFormat:@"%.2f",price];
+            NSString *priceRatioText = [NSString stringWithFormat:@"%.2f％",priceRatio];
+            NSDictionary *attributes = @{NSFontAttributeName:data.highlighter.labelFont,
+                                         NSBackgroundColorAttributeName:[UIColor grayColor],
+                                         NSStrokeColorAttributeName:data.highlighter.labelColor};
+            
+            //坐标点
+            CGFloat levelLineY = data.highlighter.touchPoint.y;
+            CGFloat labelY = data.highlighter.touchPoint.y;
+            CGSize priceLabelSize = [priceText sizeWithAttributes:attributes];
+            CGSize priceRatioLabelSize = [priceRatioText sizeWithAttributes:attributes];
+            
+            labelY = levelLineY - priceLabelSize.height / 2.0;
+            if (labelY < (self.viewHandler.contentTop)) {
+                labelY = self.viewHandler.contentTop;
+            }else if (labelY > self.viewHandler.contentBottom - priceLabelSize.height) {
+                labelY = self.viewHandler.contentBottom - priceLabelSize.height;
+            }
+            
+            CGPoint leftPoint = CGPointMake(self.viewHandler.contentLeft, labelY);
+            CGPoint rightPoint = CGPointMake(self.viewHandler.contentRight, labelY);
+            NSTextAlignment leftAlignment = NSTextAlignmentLeft;
+            NSTextAlignment rightAlignment = NSTextAlignmentRight;
+            
+            //横屏状态显示不一样
+            CGPoint startLevelLinePoint = CGPointMake(self.viewHandler.contentLeft + priceLabelSize.width, levelLineY);
+            CGPoint endLevelLinePoint = CGPointMake(self.viewHandler.contentRight - priceRatioLabelSize.width, levelLineY);
+            if (!data.highlighter.isDrawLabelWithinAxis) {
+                leftAlignment = NSTextAlignmentRight;
+                rightAlignment = NSTextAlignmentLeft;
+                
+                startLevelLinePoint = CGPointMake(self.viewHandler.contentLeft, levelLineY);
+                endLevelLinePoint = CGPointMake(self.viewHandler.contentRight, levelLineY);
+            }
+            
+            //绘制左边提示框
+            [AlexChartUtils drawText:context
+                                text:priceText
+                               point:leftPoint
+                               align:leftAlignment
+                               attrs:attributes];
+            //绘制右边提示框
+            [AlexChartUtils drawText:context
+                                text:priceRatioText
+                               point:rightPoint
+                               align:rightAlignment
+                               attrs:attributes];
+            
+            //绘制水平线
+            [AlexChartUtils drawLine:context
+                               color:data.highlighter.levelLineColor
+                               width:data.highlighter.levelLineWidth
+                          startPoint:startLevelLinePoint
+                            endPoint:endLevelLinePoint];
+        }
+    }
+    
+    //绘制竖线
+    if (data.highlighter.drawVerticalLine) {
+        CGPoint point = [data.lineSet.points[data.highlighter.index] CGPointValue];
+        [AlexChartUtils drawLine:context
+                           color:data.highlighter.verticalLineColor
+                           width:data.highlighter.verticalLineWidth
+                      startPoint:CGPointMake(point.x, self.viewHandler.contentTop)
+                        endPoint:CGPointMake(point.x, self.viewHandler.contentBottom)];
+    }
+    
+    //绘制高亮点
+    if (data.highlighter.isDrawHighlightPoint) {
+        CGPoint point = [data.lineSet.points[data.highlighter.index] CGPointValue];
+        [AlexChartUtils drawConcentricCircle:context
+                                   lineColor:data.highlighter.pointLineColor
+                                   fillColor:data.highlighter.pointColor
+                                   lineWidth:data.highlighter.pointLineWidth
+                                      radius:data.highlighter.pointRadius
+                                       point:point];
+        
+        if (data.lineSet.isDrawAvgLine) {
+            CGPoint avgPoint = [data.lineSet.avgPoints[data.highlighter.index] CGPointValue];
+            [AlexChartUtils drawConcentricCircle:context
+                                       lineColor:data.highlighter.pointLineColor
+                                       fillColor:data.highlighter.pointColor
+                                       lineWidth:data.highlighter.pointLineWidth
+                                          radius:data.highlighter.pointRadius
+                                           point:avgPoint];
+        }
+    }
+}
+
+/**
+ *  绘制K线的十字线，十字交点位于蜡烛图的中间
+ *
+ *  @param context 上下文
+ *  @param data    数据
+ */
+- (void)drawKCrossLine:(CGContextRef)context data:(AlexChartData *)data {
+    if (!data.dataSets) {
+        return;
+    }
+    
+    if (!data.highlighter.isHighlight) {
+        return;
+    }
+    
+    NSDictionary *attributes = @{NSFontAttributeName:data.highlighter.labelFont,
+                                 NSBackgroundColorAttributeName:[UIColor grayColor],
+                                 NSStrokeColorAttributeName:data.highlighter.labelColor};
+    if (data.highlighter.isDrawLevelLine) {
+        if (data.highlighter.touchPoint.y > self.viewHandler.contentTop &&
+            data.highlighter.touchPoint.y < self.viewHandler.contentBottom) {
+            
+            CGFloat price = data.yMax - (data.highlighter.touchPoint.y - self.viewHandler.contentTop) / data.drawScale;
+            NSString *labelText = [NSString stringWithFormat:@"%.2f",price];
+            if (data.highlighter.isVolumeChartType) {
+                labelText = [NSString stringWithFormat:@"%lf",price];
+            }
+            
+            CGFloat levelLineY = data.highlighter.touchPoint.y;
+            CGFloat labelX = data.highlighter.touchPoint.x;
+            CGFloat labelY = data.highlighter.touchPoint.y;
+            CGSize labelSize = [labelText sizeWithAttributes:attributes];
+            labelY = levelLineY - labelSize.height / 2.0;
+            if (labelY < self.viewHandler.contentTop) {
+                labelY = self.viewHandler.contentTop;
+            }else if (labelY < self.viewHandler.contentBottom) {
+                labelY = self.viewHandler.contentBottom - labelSize.height;
+            }
+            NSTextAlignment textAlignment = NSTextAlignmentLeft;
+            CGFloat labelA = labelSize.width;
+            CGFloat labelB = labelSize.width;
+            if (labelX < self.viewHandler.contentLeft + self.viewHandler.contentWidth/2) {
+                labelX = self.viewHandler.contentRight;
+                labelA = 0;
+                textAlignment = NSTextAlignmentRight;
+            } else {
+                labelX = self.viewHandler.contentLeft;
+                labelB = 0;
+            }
+            
+            //横屏状态显示不一样
+            CGPoint labelPoint = CGPointMake(labelX, labelY);
+            CGPoint startLevelLinePoint = CGPointMake(self.viewHandler.contentLeft + labelA, levelLineY);
+            CGPoint endLevelLinePoint = CGPointMake(self.viewHandler.contentRight - labelB, levelLineY);
+            if (!data.highlighter.isDrawLabelWithinAxis) {
+                startLevelLinePoint = CGPointMake(self.viewHandler.contentLeft, levelLineY);
+                endLevelLinePoint = CGPointMake(self.viewHandler.contentRight, levelLineY);
+                labelPoint =  CGPointMake(self.viewHandler.contentLeft, labelY);
+                textAlignment = NSTextAlignmentRight;
+            }
+            
+            //绘制左边提示框
+            [AlexChartUtils drawText:context
+                                text:labelText
+                               point:labelPoint
+                               align:textAlignment
+                               attrs:attributes];
+            //绘制水平线
+            [AlexChartUtils drawLine:context
+                               color:data.highlighter.levelLineColor
+                               width:data.highlighter.levelLineWidth
+                          startPoint:startLevelLinePoint
+                            endPoint:endLevelLinePoint];
+        }
+    }
+    
+    //绘制X轴线显示的日期label
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"yyyy-MM-dd";
+    AlexDataSet *dataSet = data.dataSets[data.highlighter.index];
+    NSString *dateString = [dateFormatter stringFromDate:dataSet.date];
+    CGSize dateLabelSize = [dateString sizeWithAttributes:attributes];
+    CGFloat dateX = data.highlighter.touchPoint.x;
+    if ((data.highlighter.touchPoint.x + dateLabelSize.width / 2.0) > self.viewHandler.contentRight) {
+        dateX = self.viewHandler.contentRight - dateLabelSize.width / 2.0;
+    }else if ((data.highlighter.touchPoint.x - dateLabelSize.width / 2.0) < self.viewHandler.contentLeft) {
+        dateX = self.viewHandler.contentLeft + dateLabelSize.width / 2.0;
+    }
+    CGPoint dateLabelPoint = CGPointMake(dateX, self.viewHandler.contentBottom);
+    [AlexChartUtils drawText:context
+                        text:dateString
+                       point:dateLabelPoint
+                       align:NSTextAlignmentCenter
+                       attrs:attributes];
+    
+    //绘制竖线
+    if (data.highlighter.drawVerticalLine) {
+        [AlexChartUtils drawLine:context
+                           color:data.highlighter.verticalLineColor
+                           width:data.highlighter.verticalLineWidth
+                      startPoint:CGPointMake(data.highlighter.touchPoint.x, self.viewHandler.contentTop)
+                        endPoint:CGPointMake(data.highlighter.touchPoint.x, self.viewHandler.contentBottom)];
+    }
 }
 
 @end
