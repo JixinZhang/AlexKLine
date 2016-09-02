@@ -32,6 +32,9 @@
     _longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGestureRecognized:)];
     _longPressGestureRecognizer.minimumPressDuration = 0.5;
     [self addGestureRecognizer:_longPressGestureRecognizer];
+    
+    _pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchGestureRecognized:)];
+    [self addGestureRecognizer:_pinchGestureRecognizer];
 }
 
 - (void)setupWithData:(NSMutableArray *)data {
@@ -66,6 +69,8 @@
         case ChartViewTypeKLine:
             _rightAxis.drawLabelsEnabled = NO;
             valCount = self.viewHandler.contentWidth / self.data.candleSet.candleWith;
+            _dragEnabled = _leftAxis.labelPosition == YAxisLabelPositionOutsideChart;
+            _zoomEnabled = _dragEnabled;
             break;
         case ChartViewTypeKColumnar:
             
@@ -210,6 +215,35 @@
 
 }
 
+- (void)computeHighlightPoint:(CGPoint)point {
+    if (point.x < self.viewHandler.contentLeft ||
+        point.x > self.viewHandler.contentRight) {
+        return;
+    }
+    switch (self.chartViewType) {
+        case ChartViewTypeNormal:
+        case ChartViewTypeLine:
+        case ChartViewTypeFiveDayLine:
+        case ChartViewTypeColumnar:
+        case ChartViewTypeFiveDayColumnar:{
+            CGFloat volumeWidth = self.viewHandler.contentWidth / self.data.valCount;
+            self.data.highlighter.index = (NSInteger)((point.x - self.viewHandler.contentLeft) / volumeWidth);
+        }
+            break;
+        case ChartViewTypeKLine:
+        case ChartViewTypeKColumnar:{
+            self.data.highlighter.index = (NSInteger)((point.x - self.viewHandler.contentLeft) / self.data.candleSet.candleWith);
+        }
+        default:
+            break;
+    }
+    self.data.highlighter.touchPoint = point;
+    self.data.highlighter.index += self.data.lastStart;
+    if (self.data.highlighter.index > self.data.dataSets.count - 1) {
+        self.data.highlighter.index = self.data.dataSets.count -1;
+    }
+}
+
 #pragma mark - 长按手势
 
 - (void)longPressGestureRecognized:(UILongPressGestureRecognizer *)longPress {
@@ -242,33 +276,65 @@
     [self setNeedsDisplay];
 }
 
-- (void)computeHighlightPoint:(CGPoint)point {
-    if (point.x < self.viewHandler.contentLeft ||
-        point.x > self.viewHandler.contentRight) {
+#pragma mark - 捏合手势
+
+static NSInteger lastYValCount;
+static NSInteger temp;
+
+- (void)pinchGestureRecognized:(UIPinchGestureRecognizer *)pinch {
+    if (!self.isZoomEnabled ||
+        self.data.dataSets.count == 0) {
         return;
     }
-    switch (self.chartViewType) {
-        case ChartViewTypeNormal:
-        case ChartViewTypeLine:
-        case ChartViewTypeFiveDayLine:
-        case ChartViewTypeColumnar:
-        case ChartViewTypeFiveDayColumnar:{
-            CGFloat volumeWidth = self.viewHandler.contentWidth / self.data.valCount;
-            self.data.highlighter.index = (NSInteger)((point.x - self.viewHandler.contentLeft) / volumeWidth);
-        }
-            break;
-        case ChartViewTypeKLine:
-        case ChartViewTypeKColumnar:{
-            self.data.highlighter.index = (NSInteger)((point.x - self.viewHandler.contentLeft) / self.data.candleSet.candleWith);
-        }
-        default:
-            break;
+    
+    if (pinch.state == UIGestureRecognizerStateBegan) {
+        lastYValCount = self.data.valCount;
+        temp = 0;
     }
-    self.data.highlighter.touchPoint = point;
-    self.data.highlighter.index += self.data.lastStart;
-    if (self.data.highlighter.index > self.data.dataSets.count - 1) {
-        self.data.highlighter.index = self.data.dataSets.count -1;
+    
+    CGFloat candleW = self.data.candleSet.candleWith * pinch.scale;
+    if (candleW > self.data.candleSet.candleMaxW ||
+        candleW < self.data.candleSet.candleMinW) {
+        return;
     }
+    self.data.candleSet.candleWith = candleW;
+    CGFloat valCount = self.viewHandler.contentWidth / self.data.candleSet.candleWith;
+    NSInteger offset = floor(valCount) - lastYValCount;
+    self.data.valCount = floor(valCount);
+    
+    if (offset % 2 != 0) {
+        if (temp % 2 == 0) {
+            NSInteger num = 1;
+            if (offset < 0) {
+                num = -1;
+            }
+            self.data.lastStart -= num;
+        }
+        temp++;
+    }
+    
+    if (self.data.valCount < self.data.dataSets.count) {
+        self.data.lastStart -= offset / 2.0;
+        self.data.lastEnd = self.data.lastStart + self.data.valCount;
+    }else {
+        self.data.lastStart = 0;
+        self.data.lastEnd = self.data.dataSets.count;
+    }
+    lastYValCount = self.data.valCount;
+    if (self.pinchRecognizerBlock) {
+        self.pinchRecognizerBlock(self.data);
+    }
+    pinch.scale = 1.0f;
+    [self setNeedsDisplay];
 }
+
+- (void)zoomPage:(AlexChartData *)data {
+    self.data.lastEnd = data.lastEnd;
+    self.data.lastStart = data.lastStart;
+    self.data.valCount = data.valCount;
+    self.data.candleSet.candleWith = data.candleSet.candleWith;
+    [self setNeedsDisplay];
+}
+
 
 @end

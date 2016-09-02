@@ -123,6 +123,7 @@
 }
 
 - (AlexChartView *)candleChartView {
+    __weak typeof (self)weakSelf = self;
     if (!_candleChartView) {
         _candleChartView = [[AlexChartView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.fundChartView.frame), self.frame.size.width, 150)];
         _candleChartView.backgroundColor = [UIColor whiteColor];
@@ -151,6 +152,11 @@
         
         
         [_candleChartView.viewHandler restrainViewPortOffsetLeft:30 offsetTop:5 offsetRight:35 offsetBottom:20];
+        
+        _candleChartView.pinchRecognizerBlock = ^(AlexChartData *data) {
+            [weakSelf.candleChartView zoomPage:data];
+        };
+
     }
     return _candleChartView;
 }

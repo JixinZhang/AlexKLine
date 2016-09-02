@@ -16,7 +16,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AlexKLine/Chart/ChartRender/AlexDataRender.m"
@@ -35,29 +35,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AlexKLine/Chart/ChartRender/AlexDataRender.m"
-            timestampString = "491997274.238806"
+            filePath = "AlexKLine/Chart/View/AlexChartView.m"
+            timestampString = "494480408.355411"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "-DrawCandle:data:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AlexKLine/Chart/ChartRender/AlexDataRender.m"
-            timestampString = "492428845.844836"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "332"
-            endingLineNumber = "332"
-            landmarkName = "-drawKCrossLine:data:"
+            startingLineNumber = "285"
+            endingLineNumber = "285"
+            landmarkName = "-pinchGestureRecognized:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

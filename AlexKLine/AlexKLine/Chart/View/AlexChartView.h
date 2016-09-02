@@ -51,9 +51,9 @@ typedef void (^AlexChartViewHighlightBlock)(AlexChartHighlight *highlight, UILon
 @property (nonatomic, strong) UILongPressGestureRecognizer *longPressGestureRecognizer;
 
 @property (nonatomic, copy) AlexChartViewHighlightBlock highlightBlock;
-
+@property (nonatomic, copy) AlexChartViewPinchRecognizerBlock pinchRecognizerBlock;
 - (void)calcMinMax;
 - (void)setupWithData:(NSMutableArray *)data;
 
-
+- (void)zoomPage:(AlexChartData *)data;
 @end
