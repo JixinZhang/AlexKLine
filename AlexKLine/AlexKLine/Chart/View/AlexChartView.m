@@ -60,7 +60,7 @@
 //            valCount = 241;
             _rightAxis.drawLabelsEnabled = NO;
             _leftAxis.drawGridLinesEnabled = NO;
-//            self.data.highlighter.volumeChartType = YES;
+            self.data.highlighter.volumeChartType = YES;
             _leftAxis.drawLabelsEnabled = _leftAxis.labelPosition == YAxisLabelPositionOutsideChart;
             break;
         case ChartViewTypeFiveDayColumnar:

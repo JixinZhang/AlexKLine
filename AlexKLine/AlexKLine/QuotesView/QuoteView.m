@@ -17,6 +17,7 @@
 @property (nonatomic, strong) AlexChartView *fundChartView;
 @property (nonatomic, strong) AlexChartView *candleChartView;
 @property (nonatomic, strong) AlexChartView *volumeChartView;
+@property (nonatomic, strong) UIScrollView *scrollView;
 @end
 
 @implementation QuoteView
@@ -37,15 +38,24 @@
     return self;
 }
 
+- (UIScrollView *)scrollView {
+    if (!_scrollView) {
+        _scrollView = [[UIScrollView alloc] initWithFrame:self.frame];
+        _scrollView.contentSize = CGSizeMake(self.frame.size.width, self.frame.size.height * 2);
+    }
+    return _scrollView;
+}
+
 - (void)setupViews {
-    [self addSubview:self.chartView];
+    [self addSubview:self.scrollView];
+    [self.scrollView addSubview:self.chartView];
     [self requestChartData];
-    [self addSubview:self.fundChartView];
+    [self.scrollView addSubview:self.fundChartView];
     [self requestChartDataForWeex];
-    [self addSubview:self.candleChartView];
+    [self.scrollView addSubview:self.candleChartView];
     [self requestChartDataForKLine];
     
-    [self addSubview:self.volumeChartView];
+    [self.scrollView addSubview:self.volumeChartView];
 }
 
 - (AlexChartView *)chartView {
