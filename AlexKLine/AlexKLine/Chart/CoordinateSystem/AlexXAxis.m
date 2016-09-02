@@ -72,11 +72,11 @@
     for (NSInteger i = 0; i < _labelCount; i++) {
         AlexDataSet *dataSet;
         if (i == 0) {
-            dataSet = data.dataSets.firstObject;
+            dataSet = data.dataSets[data.lastStart];
         }else if (i == data.dataSets.count - 1) {
-            dataSet = data.dataSets.lastObject;
+            dataSet = data.dataSets[data.lastEnd];
         }else {
-            NSInteger index = floorf((data.dataSets.count - 1) / (_labelCount -1) * i / 1.0);
+            NSInteger index = data.lastStart + floorf((data.lastEnd - data.lastStart - 1) / (_labelCount -1) * i / 1.0);
             dataSet = data.dataSets[index];
         }
         

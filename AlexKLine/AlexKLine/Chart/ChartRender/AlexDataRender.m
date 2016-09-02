@@ -281,7 +281,7 @@
             labelY = levelLineY - labelSize.height / 2.0;
             if (labelY < self.viewHandler.contentTop) {
                 labelY = self.viewHandler.contentTop;
-            }else if (labelY < self.viewHandler.contentBottom) {
+            }else if (labelY > self.viewHandler.contentBottom) {
                 labelY = self.viewHandler.contentBottom - labelSize.height;
             }
             NSTextAlignment textAlignment = NSTextAlignmentLeft;

@@ -36,12 +36,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AlexKLine/Chart/View/AlexChartView.m"
-            timestampString = "494480408.355411"
+            timestampString = "494488385.375194"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "285"
-            endingLineNumber = "285"
-            landmarkName = "-pinchGestureRecognized:"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "-setupChart"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -51,13 +51,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AlexKLine/Chart/View/AlexChartView.m"
-            timestampString = "494488385.375194"
+            filePath = "AlexKLine/Chart/CoordinateSystem/AlexXAxis.m"
+            timestampString = "494489966.218495"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "-setupChart"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "-setupKLineValues:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
