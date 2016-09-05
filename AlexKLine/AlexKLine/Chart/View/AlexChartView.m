@@ -35,6 +35,9 @@
     
     _pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchGestureRecognized:)];
     [self addGestureRecognizer:_pinchGestureRecognizer];
+    
+    _panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognized:)];
+    [self addGestureRecognizer:_panGestureRecognizer];
 }
 
 - (void)setupWithData:(NSMutableArray *)data {
@@ -334,6 +337,31 @@ static NSInteger temp;
     self.data.valCount = data.valCount;
     self.data.candleSet.candleWith = data.candleSet.candleWith;
     [self setNeedsDisplay];
+}
+
+#pragma mark - 拖曳手势
+
+- (void)panGestureRecognized:(UIPanGestureRecognizer *)pan {
+    if (!self.isDragEnabled || self.data.dataSets.count == 0) {
+        return;
+    }
+    
+//    switch (pan.state) {
+//        case UIGestureRecognizerStateBegan:
+//            <#statements#>
+//            break;
+//        case <#constant#>:
+//            <#statements#>
+//            break;
+//        case <#constant#>:
+//            <#statements#>
+//            break;
+//        case <#constant#>:
+//            <#statements#>
+//            break;
+//        default:
+//            break;
+//    }
 }
 
 
