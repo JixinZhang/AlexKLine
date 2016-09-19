@@ -320,6 +320,8 @@
 				TargetAttributes = {
 					789F20021CC0D163000C3060 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 49FUNDNGC6;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -497,6 +499,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 49FUNDNGC6;
 				INFOPLIST_FILE = AlexKLine/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zjixin.AlexKLine;
@@ -508,6 +512,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 49FUNDNGC6;
 				INFOPLIST_FILE = AlexKLine/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zjixin.AlexKLine;

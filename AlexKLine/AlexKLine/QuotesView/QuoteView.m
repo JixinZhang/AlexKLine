@@ -42,6 +42,7 @@
     if (!_scrollView) {
         _scrollView = [[UIScrollView alloc] initWithFrame:self.frame];
         _scrollView.contentSize = CGSizeMake(self.frame.size.width, self.frame.size.height * 2);
+        _scrollView.showsHorizontalScrollIndicator = YES;
     }
     return _scrollView;
 }
@@ -49,12 +50,14 @@
 - (void)setupViews {
     [self addSubview:self.scrollView];
     [self.scrollView addSubview:self.chartView];
+    
     [self requestChartData];
     [self.scrollView addSubview:self.fundChartView];
+    
     [self requestChartDataForWeex];
     [self.scrollView addSubview:self.candleChartView];
-    [self requestChartDataForKLine];
     
+    [self requestChartDataForKLine];
     [self.scrollView addSubview:self.volumeChartView];
 }
 
