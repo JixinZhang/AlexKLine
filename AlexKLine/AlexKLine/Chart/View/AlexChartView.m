@@ -12,6 +12,17 @@
 
 @property (nonatomic, strong) CALayer *highlightLayer;
 
+
+@property (nonatomic, assign) CGFloat scrollSpeed;              //滑动速度
+@property (nonatomic, assign) CGFloat startVelocity;            //开始的速度
+@property (nonatomic, assign) CGFloat decelerationRate;         //减速的速率
+
+@property (nonatomic, assign) CGFloat scrollOffset;             //滑动的偏移量
+@property (nonatomic, assign) CGFloat previousTranslation;      //位置信息
+@property (nonatomic, assign) BOOL didDrag;//是否在拖动
+@property (nonatomic, assign, getter = isDragging) BOOL dragging;           //是否在拖拽
+@property (nonatomic, assign, getter = isScrolling) BOOL scrolling;         //是否在滑动
+@property (nonatomic, assign, getter = isDecelerating) BOOL decelerating;   //是否在减速
 @end
 
 @implementation AlexChartView
@@ -86,6 +97,9 @@
     self.data.valCount = valCount;
     [self.data computeLastStartAndLastEnd];
     [self setNeedsDisplay];
+    
+    _scrollSpeed = 1.0;
+    _decelerationRate = 0.95;
 }
 
 - (CALayer *)highlightLayer {
@@ -346,22 +360,36 @@ static NSInteger temp;
         return;
     }
     
-//    switch (pan.state) {
-//        case UIGestureRecognizerStateBegan:
-//            <#statements#>
-//            break;
-//        case <#constant#>:
-//            <#statements#>
-//            break;
-//        case <#constant#>:
-//            <#statements#>
-//            break;
-//        case <#constant#>:
-//            <#statements#>
-//            break;
-//        default:
-//            break;
-//    }
+    switch (pan.state) {
+        case UIGestureRecognizerStateBegan: {
+            _dragging = YES;
+            _scrolling = NO;
+            _decelerating = NO;
+            _previousTranslation = [pan translationInView:self].x;
+        }
+            break;
+        case UIGestureRecognizerStateChanged: {
+            //拖曳手势的速率，坐标系中X的值 向左 为 负 向右为 正
+            CGFloat velocity = [pan velocityInView:self].x;
+            //坐标系中移动的像素
+            CGFloat translation = [pan translationInView:self].x;
+            NSLog(@"\n velocity = %f,\n translation = %f", velocity, translation);
+            //因子
+            CGFloat factor = 0.3;
+            //开始的速率
+            _startVelocity = -velocity * factor * _scrollSpeed / self.data.candleSet.candleWith;
+            //偏移量
+            _scrollOffset -= (translation - _previousTranslation) / self.data.candleSet.candleWith;
+            _previousTranslation = translation;
+//            self.data.lastEnd -= _scrollOffset;
+//            self.data.lastStart -= _scrollOffset;
+            [self setNeedsDisplay];
+        }
+            break;
+        
+        default:
+            break;
+    }
 }
 
 
