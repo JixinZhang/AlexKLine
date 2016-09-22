@@ -12,10 +12,13 @@
 
 @property (nonatomic, strong) CALayer *highlightLayer;
 
+@property (nonatomic, assign) NSInteger numberOfItems;
+@property (nonatomic, assign) NSInteger currentItemIndex;       //当前item的下标
 
 @property (nonatomic, assign) CGFloat scrollSpeed;              //滑动速度
 @property (nonatomic, assign) CGFloat startVelocity;            //开始的速度
 @property (nonatomic, assign) CGFloat decelerationRate;         //减速的速率
+@property (nonatomic, assign) CGFloat bounceDistance;           //回弹的距离
 
 @property (nonatomic, assign) CGFloat scrollOffset;             //滑动的偏移量
 @property (nonatomic, assign) CGFloat previousTranslation;      //位置信息
@@ -100,6 +103,8 @@
     
     _scrollSpeed = 1.0;
     _decelerationRate = 0.95;
+    _numberOfItems = data.count;
+    _bounceDistance = self.data.valCount/4;       //弹跳的距离
 }
 
 - (CALayer *)highlightLayer {
@@ -381,8 +386,7 @@ static NSInteger temp;
             //偏移量
             _scrollOffset -= (translation - _previousTranslation) / self.data.candleSet.candleWith;
             _previousTranslation = translation;
-//            self.data.lastEnd -= _scrollOffset;
-//            self.data.lastStart -= _scrollOffset;
+            
             [self setNeedsDisplay];
         }
             break;
@@ -392,5 +396,24 @@ static NSInteger temp;
     }
 }
 
+- (void)didScroll {
+    CGFloat min = _bounceDistance;
+    CGFloat max = 0;
+    if (_numberOfItems > self.data.valCount) {
+        max = MAX(_numberOfItems - self.data.valCount, 0.0) + _bounceDistance;
+    }else {
+        max = MAX(0, 0.0) + _bounceDistance;
+    }
+    
+    if (_scrollOffset < min) {
+        _scrollOffset = min;
+        _startVelocity = 0.0;
+    }else if (_scrollOffset > max) {
+        _scrollOffset = max;
+        _startVelocity = 0.0;
+    }
+    
+//    NSInteger difference =
+}
 
 @end
